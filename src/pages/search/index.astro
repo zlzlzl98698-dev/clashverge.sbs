@@ -1,0 +1,254 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { getAllPublishedContent } from '../../utils/content';
+import { brands } from '../../data/brands';
+import { getAllSecondaryTopics } from '../../data/navigation';
+
+const allContent = await getAllPublishedContent();
+const allTopics = getAllSecondaryTopics();
+
+const fallbackIndex = [
+  ...allContent.map((a) => ({
+    type: '原创文章',
+    title: a.data.title,
+    excerpt: a.data.excerpt || a.data.description,
+    url: a.href,
+    keywords: [a.data.primaryKeyword, ...a.data.secondaryKeywords, ...a.data.tags].join(' '),
+  })),
+  ...brands.map((b) => ({
+    type: '品牌档案',
+    title: `${b.name} (${b.englishName}) 深度评测与套餐档案`,
+    excerpt: `${b.summary} 入门价格：${b.entryPriceLabel}，线路：${b.lineCategory}，客户端：${b.clientSupport}。`,
+    url: `/brands/${b.slug}/`,
+    keywords: `${b.name} ${b.englishName} ${b.slug} ${b.lineType} ${b.protocols.join(' ')} ${b.clientSupport}`,
+  })),
+  ...allTopics.map((t) => ({
+    type: '专题频道',
+    title: t.title,
+    excerpt: t.description,
+    url: t.href,
+    keywords: `${t.name} ${t.primaryKeyword} ${t.secondaryKeywords.join(' ')}`,
+  })),
+];
+
+const breadcrumbs = [
+  { name: '首页', href: '/' },
+  { name: '站内全文搜索', href: '/search/' },
+];
+---
+
+<BaseLayout
+  title="站内全文搜索：检索 31 家机场品牌、原创评测与 Clash 教程 | 订阅指南"
+  description="使用 Pagefind 静态全文检索引擎搜索订阅指南（clashverge.sbs）全站文章、31 家机场品牌套餐、测速报告与 Clash Verge Rev 故障排查指南。"
+  canonical="/search/"
+  breadcrumbs={breadcrumbs}
+  pagefindIgnore={true}
+>
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+    <Breadcrumb items={breadcrumbs} />
+
+    <header class="p-6 sm:p-8 rounded-3xl bg-[#F7F9FC] border border-[#E5EAF1] space-y-4">
+      <div class="flex items-center justify-between">
+        <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#2563EB] text-white">
+          PAGEFIND FULL-TEXT SEARCH
+        </span>
+        <span class="text-xs text-[#64748B] font-mono">支持中文分词 · 标题与正文检索</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-[#172033]">
+        站内全文搜索引擎
+      </h1>
+      <p class="text-sm sm:text-base text-[#64748B]">
+        输入品牌名称（如：光速云、Firefly、星岛梦）、技术名词（IEPL、VLESS、Hysteria 2、Mihomo）或故障症状（Timeout、订阅失败）快速定位内容。
+      </p>
+
+      <!-- Search Input Bar -->
+      <div class="relative flex items-center pt-2">
+        <svg
+          class="w-5 h-5 text-[#2563EB] absolute left-4 pointer-events-none"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+        </svg>
+        <input
+          id="pagefind-search-input"
+          type="search"
+          placeholder="输入中文或英文关键词，例如：光速云、99元、不限时、Clash Verge、Timeout..."
+          aria-label="全文搜索输入框"
+          class="w-full pl-12 pr-28 py-4 rounded-2xl bg-white border-2 border-[#E5EAF1] focus:border-[#2563EB] text-base text-[#172033] shadow-xs"
+        />
+        <button
+          id="pagefind-clear-btn"
+          type="button"
+          class="hidden absolute right-20 px-2.5 py-1 rounded-lg text-xs text-[#64748B] hover:text-[#172033] cursor-pointer"
+        >
+          清空
+        </button>
+        <button
+          id="pagefind-submit-btn"
+          type="button"
+          class="absolute right-2.5 px-4 py-2 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-sm font-bold cursor-pointer"
+        >
+          搜索
+        </button>
+      </div>
+
+      <!-- Quick Hot Tags -->
+      <div class="flex flex-wrap items-center gap-2 text-xs text-[#64748B]">
+        <span class="font-bold text-[#172033]">快捷热词：</span>
+        {['光速云', 'IEPL', 'VLESS', '不限时', 'Clash Verge', 'Timeout', 'Firefly', '星岛梦', '5.6元', 'NekoBox'].map((kw) => (
+          <button
+            type="button"
+            data-quick-kw={kw}
+            class="px-2.5 py-1 rounded-lg bg-white hover:bg-[#EFF6FF] border border-[#E5EAF1] text-[#172033] hover:text-[#2563EB] cursor-pointer transition-colors"
+          >
+            {kw}
+          </button>
+        ))}
+      </div>
+    </header>
+
+    <!-- Results Status & Container -->
+    <section class="space-y-4">
+      <div class="flex items-center justify-between text-xs text-[#64748B]">
+        <span id="search-status-text">正在展示全站推荐检索条目（输入关键词即可实时过滤）</span>
+        <span id="search-engine-badge" class="font-mono text-[#2563EB]">Engine: Pagefind + Instant Index</span>
+      </div>
+
+      <div id="search-results-list" class="space-y-4"></div>
+
+      <div
+        id="search-empty-box"
+        class="hidden p-10 rounded-3xl bg-[#F7F9FC] border border-[#E5EAF1] text-center space-y-3"
+      >
+        <p class="text-lg font-extrabold text-[#172033]">未检索到与该关键词直接匹配的页面</p>
+        <p class="text-sm text-[#64748B]">
+          您可以尝试缩短关键词（例如搜索「光速云」「IEPL」「Clash」），或直接进入 <a href="/brands/" class="text-[#2563EB] underline">31 家品牌数据库</a> 筛选。
+        </p>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<script is:inline define:vars={{ fallbackIndex }}>
+  document.addEventListener('DOMContentLoaded', async () => {
+    const input = document.getElementById('pagefind-search-input');
+    const clearBtn = document.getElementById('pagefind-clear-btn');
+    const submitBtn = document.getElementById('pagefind-submit-btn');
+    const statusText = document.getElementById('search-status-text');
+    const resultsList = document.getElementById('search-results-list');
+    const emptyBox = document.getElementById('search-empty-box');
+    const quickButtons = document.querySelectorAll('[data-quick-kw]');
+
+    let pagefindModule = null;
+    try {
+      const pfPath = '/pagefind/pagefind.js';
+      pagefindModule = await import(/* @vite-ignore */ pfPath);
+      if (pagefindModule && pagefindModule.init) {
+        await pagefindModule.init();
+      }
+    } catch (_) {
+      pagefindModule = null;
+    }
+
+    function renderItems(items, query) {
+      if (!resultsList) return;
+      resultsList.innerHTML = '';
+
+      if (items.length === 0) {
+        emptyBox?.classList.remove('hidden');
+        if (statusText) statusText.textContent = `关键词「${query}」共匹配到 0 条结果`;
+        return;
+      }
+
+      emptyBox?.classList.add('hidden');
+      if (statusText) {
+        statusText.textContent = query
+          ? `关键词「${query}」共检索到 ${items.length} 条匹配内容`
+          : `默认展示 ${items.length} 条核心文章与品牌档案`;
+      }
+
+      items.forEach((item) => {
+        const card = document.createElement('article');
+        card.className = 'editorial-card p-5 space-y-2 block';
+        card.innerHTML = `
+          <div class="flex items-center justify-between text-xs">
+            <span class="px-2.5 py-0.5 rounded bg-[#EFF6FF] text-[#2563EB] font-bold">${item.type || '站内页面'}</span>
+            <span class="font-mono text-[#64748B]">${item.url}</span>
+          </div>
+          <h2 class="text-lg font-extrabold text-[#172033] hover:text-[#2563EB]">
+            <a href="${item.url}">${item.title}</a>
+          </h2>
+          <p class="text-sm text-[#64748B] leading-relaxed">${item.excerpt}</p>
+        `;
+        resultsList.appendChild(card);
+      });
+    }
+
+    async function runSearch(rawQuery) {
+      const q = (rawQuery || '').trim();
+      clearBtn?.classList.toggle('hidden', !q);
+
+      if (!q) {
+        renderItems(fallbackIndex.slice(0, 15), '');
+        return;
+      }
+
+      const lower = q.toLowerCase();
+      const instantMatches = fallbackIndex.filter(
+        (it) =>
+          it.title.toLowerCase().includes(lower) ||
+          it.excerpt.toLowerCase().includes(lower) ||
+          it.keywords.toLowerCase().includes(lower)
+      );
+
+      if (pagefindModule && pagefindModule.search) {
+        try {
+          const pfRes = await pagefindModule.search(q);
+          if (pfRes && pfRes.results && pfRes.results.length > 0) {
+            const loaded = await Promise.all(pfRes.results.slice(0, 15).map((r) => r.data()));
+            const pfItems = loaded.map((d) => ({
+              type: 'Pagefind 全文索引',
+              title: d.meta?.title || d.url,
+              excerpt: d.excerpt || '',
+              url: d.url,
+            }));
+            const mergedUrls = new Set(pfItems.map((i) => i.url));
+            const combined = [
+              ...pfItems,
+              ...instantMatches.filter((m) => !mergedUrls.has(m.url)),
+            ];
+            renderItems(combined, q);
+            return;
+          }
+        } catch (_) {}
+      }
+
+      renderItems(instantMatches, q);
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const initialQ = params.get('q') || '';
+    if (input && initialQ) {
+      input.value = initialQ;
+    }
+    await runSearch(initialQ);
+
+    input?.addEventListener('input', (e) => runSearch(e.target.value));
+    submitBtn?.addEventListener('click', () => runSearch(input?.value || ''));
+    clearBtn?.addEventListener('click', () => {
+      if (input) input.value = '';
+      runSearch('');
+    });
+    quickButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const kw = btn.getAttribute('data-quick-kw') || '';
+        if (input) input.value = kw;
+        runSearch(kw);
+      });
+    });
+  });
+</script>

@@ -1,0 +1,27 @@
+---
+import ArticleLayout from './ArticleLayout.astro';
+import type { Props as ArticleLayoutProps } from './ArticleLayout.astro';
+import { getBrandBySlug } from '../data/brands';
+import PricingTable from '../components/PricingTable.astro';
+import NetworkPerformanceReport from '../components/charts/NetworkPerformanceReport.astro';
+import StreamingAvailabilityMatrix from '../components/charts/StreamingAvailabilityMatrix.astro';
+
+export interface Props extends ArticleLayoutProps {}
+
+const props = Astro.props;
+const primaryBrand = getBrandBySlug(props.item.data.relatedBrands?.[0] || 'guangsuyun');
+---
+
+<ArticleLayout {...props}>
+  <slot />
+  {primaryBrand && (
+    <div class="mt-10 pt-8 border-t border-[#E5EAF1]">
+      <h2 class="text-2xl font-extrabold text-[#172033] mb-4">
+        附：{primaryBrand.name} 实验室结构化测速与套餐快照
+      </h2>
+      <NetworkPerformanceReport brand={primaryBrand} />
+      <StreamingAvailabilityMatrix brand={primaryBrand} />
+      <PricingTable brand={primaryBrand} />
+    </div>
+  )}
+</ArticleLayout>

@@ -1,0 +1,10 @@
+---
+import type { UnifiedContentItem } from '../../utils/content';
+import ArticleCard from '../ArticleCard.astro';
+
+export interface Props {
+  item: UnifiedContentItem;
+}
+const { item } = Astro.props;
+---
+<ArticleCard item={item} variant="comparison" />

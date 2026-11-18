@@ -1,0 +1,39 @@
+---
+export interface BreadcrumbItem {
+  name: string;
+  href: string;
+}
+
+export interface Props {
+  items: BreadcrumbItem[];
+}
+
+const { items = [] } = Astro.props;
+---
+
+{items.length > 0 && (
+  <nav aria-label="面包屑导航" class="mb-5 text-sm text-[#64748B]">
+    <ol class="flex flex-wrap items-center gap-1.5">
+      {items.map((item, index) => {
+        const isLast = index === items.length - 1;
+        return (
+          <li class="flex items-center gap-1.5">
+            {index > 0 && <span class="text-slate-300 select-none">/</span>}
+            {isLast ? (
+              <span class="font-medium text-[#172033] line-clamp-1 max-w-[260px] sm:max-w-md" aria-current="page">
+                {item.name}
+              </span>
+            ) : (
+              <a
+                href={item.href}
+                class="hover:text-[#2563EB] transition-colors whitespace-nowrap"
+              >
+                {item.name}
+              </a>
+            )}
+          </li>
+        );
+      })}
+    </ol>
+  </nav>
+)}

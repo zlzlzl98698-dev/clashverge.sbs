@@ -1,0 +1,21 @@
+---
+import ArticleLayout from './ArticleLayout.astro';
+import type { Props as ArticleLayoutProps } from './ArticleLayout.astro';
+
+export interface Props extends ArticleLayoutProps {}
+
+const props = Astro.props;
+---
+
+<ArticleLayout {...props}>
+  <div class="my-6 p-4 rounded-2xl bg-[#F7F9FC] border border-[#E5EAF1] flex flex-wrap items-center justify-between gap-2 text-xs">
+    <div class="flex items-center gap-2">
+      <span class="px-2.5 py-0.5 rounded bg-indigo-600 text-white font-bold">实操教程指南</span>
+      <span class="text-[#172033] font-medium">适用环境：Windows 10/11 · macOS (Intel &amp; Apple Silicon) · Android · iOS · Linux · OpenWrt</span>
+    </div>
+    <a href="/clash/troubleshooting/" class="text-[#2563EB] font-semibold hover:underline">
+      遇到报错？直达故障排查 →
+    </a>
+  </div>
+  <slot />
+</ArticleLayout>

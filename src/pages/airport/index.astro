@@ -1,0 +1,11 @@
+---
+import CategoryLayout from '../../layouts/CategoryLayout.astro';
+import { getPrimarySectionById } from '../../data/navigation';
+import { getAllPublishedContent } from '../../utils/content';
+
+const section = getPrimarySectionById('airport')!;
+const allContent = await getAllPublishedContent();
+const articles = allContent.filter((a) => a.data.category === 'airport' || a.collection === 'reviews' || a.collection === 'comparisons');
+---
+
+<CategoryLayout section={section} articles={articles} />

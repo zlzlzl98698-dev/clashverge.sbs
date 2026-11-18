@@ -1,0 +1,114 @@
+---
+import type { BrandProfile, UnlockStatus } from '../../data/brands/schema';
+
+export interface Props {
+  brand: BrandProfile;
+}
+
+const { brand } = Astro.props;
+const m = brand.unlockMatrix;
+
+interface MatrixItem {
+  name: string;
+  category: 'AI 生产力平台' | '海外流媒体服务';
+  status: UnlockStatus;
+}
+
+const services: MatrixItem[] = [
+  { name: 'ChatGPT (OpenAI)', category: 'AI 生产力平台', status: m.chatgpt },
+  { name: 'Claude (Anthropic)', category: 'AI 生产力平台', status: m.claude },
+  { name: 'Google Gemini', category: 'AI 生产力平台', status: m.gemini },
+  { name: 'Netflix 原创/非自制剧', category: '海外流媒体服务', status: m.netflix },
+  { name: 'Disney+', category: '海外流媒体服务', status: m.disneyPlus },
+  { name: 'YouTube Premium 4K', category: '海外流媒体服务', status: m.youtube },
+  { name: 'HBO Max', category: '海外流媒体服务', status: m.hboMax },
+  { name: 'TikTok 跨区访问', category: '海外流媒体服务', status: m.tiktok },
+  { name: 'Spotify', category: '海外流媒体服务', status: m.spotify },
+];
+
+const badgeConfig: Record<UnlockStatus, { code: string; label: string; dot: string; border: string; text: string }> = {
+  supported: {
+    code: 'MEASURED // OPERATIONAL',
+    label: '实测支持',
+    dot: 'bg-emerald-400',
+    border: 'border-emerald-500/40',
+    text: 'text-emerald-300',
+  },
+  partial: {
+    code: 'PARTIAL // NODE DEPENDENT',
+    label: '部分节点支持（视节点而定）',
+    dot: 'bg-amber-400',
+    border: 'border-amber-500/40',
+    text: 'text-amber-300',
+  },
+  vendor: {
+    code: 'VENDOR DATA // CLAIMED',
+    label: '品牌资料宣称支持',
+    dot: 'bg-sky-400',
+    border: 'border-sky-500/40',
+    text: 'text-sky-300',
+  },
+  unsupported: {
+    code: 'UNAVAILABLE // FAILED',
+    label: '实测不支持/多次失败',
+    dot: 'bg-rose-500',
+    border: 'border-rose-500/40',
+    text: 'text-rose-300',
+  },
+  untested: {
+    code: 'NOT TESTED // PENDING',
+    label: '尚未统一实测',
+    dot: 'bg-slate-500',
+    border: 'border-slate-700',
+    text: 'text-slate-400',
+  },
+};
+---
+
+<section class="observatory-panel p-5 sm:p-6 my-8 shadow-lg" aria-label={`${brand.name} AI 与流媒体可用性矩阵`}>
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 mb-5 border-b border-[#1E2D4A]">
+    <div>
+      <h3 class="text-base sm:text-lg font-bold text-white">
+        {brand.name} · Service Availability Matrix (AI &amp; Streaming)
+      </h3>
+      <p class="text-xs text-slate-400 font-mono-metric mt-0.5">
+        严格区分「独立实测支持」「部分节点可用」「品牌资料自述 (Vendor Data)」与「尚未测试」
+      </p>
+    </div>
+    <span class="text-xs font-mono-metric px-2.5 py-1 rounded bg-[#111C33] border border-[#1E2D4A] text-slate-300">
+      VERIFIED: {brand.verifiedDate}
+    </span>
+  </div>
+
+  <!-- 3-Column Responsive Grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+    {services.map((svc) => {
+      const cfg = badgeConfig[svc.status] || badgeConfig.untested;
+      return (
+        <div class={`observatory-subpanel p-3.5 border ${cfg.border} flex flex-col justify-between`}>
+          <div class="flex items-center justify-between gap-2 mb-2">
+            <span class="text-[11px] font-mono-metric text-slate-400">{svc.category}</span>
+            <span class="inline-flex items-center gap-1.5 text-[10px] font-mono-metric px-2 py-0.5 rounded bg-slate-900/90 text-slate-300">
+              <span class={`w-2 h-2 rounded-full ${cfg.dot}`}></span>
+              <span>{cfg.code.split('//')[0]}</span>
+            </span>
+          </div>
+          <div class="my-1">
+            <h4 class="text-sm font-bold text-white">{svc.name}</h4>
+            <p class={`text-xs font-medium mt-0.5 ${cfg.text}`}>{cfg.label}</p>
+          </div>
+        </div>
+      );
+    })}
+  </div>
+
+  <!-- Textual Explanation -->
+  <div class="mt-4 pt-3.5 border-t border-[#1E2D4A] text-xs text-slate-300 space-y-1">
+    <p>
+      <strong class="text-white">可用性矩阵说明：</strong>{m.notes}
+    </p>
+    <p class="text-slate-400">
+      状态图例：Operational（实测支持） / Partial（需手动切换特定节点） / Vendor Data（源自品牌资料说明，未做独立背书） / Not Tested（原资料未提供逐项测试结果）。
+    </p>
+  </div>
+</section>

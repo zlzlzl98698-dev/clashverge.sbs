@@ -1,0 +1,30 @@
+---
+import type { UnifiedContentItem } from '../utils/content';
+import ArticleCard from './ArticleCard.astro';
+
+export interface Props {
+  articles: UnifiedContentItem[];
+  title?: string;
+}
+
+const { articles = [], title = '延伸阅读与相关评测推荐' } = Astro.props;
+---
+
+{articles.length > 0 && (
+  <section class="my-12 pt-8 border-t border-[#E5EAF1]">
+    <div class="flex items-center justify-between mb-6">
+      <div>
+        <h2 class="text-xl font-extrabold text-[#172033]">{title}</h2>
+        <p class="text-xs text-[#64748B] mt-0.5">围绕当前主题的上下游专题、横向对比与客户端排障指南</p>
+      </div>
+      <a href="/articles/" class="text-xs font-semibold text-[#2563EB] hover:underline">
+        查看全部文章 →
+      </a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      {articles.slice(0, 3).map((item) => (
+        <ArticleCard item={item} variant="compact" />
+      ))}
+    </div>
+  </section>
+)}

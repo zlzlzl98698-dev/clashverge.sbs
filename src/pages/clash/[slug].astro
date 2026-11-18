@@ -1,0 +1,23 @@
+---
+import TopicLayout from '../../layouts/TopicLayout.astro';
+import { getPrimarySectionById } from '../../data/navigation';
+import { getAllPublishedContent } from '../../utils/content';
+
+export function getStaticPaths() {
+  const section = getPrimarySectionById('clash')!;
+  return section.topics.map((topic) => ({
+    params: { slug: topic.slug },
+    props: { topic },
+  }));
+}
+
+const { topic } = Astro.props;
+const allContent = await getAllPublishedContent();
+const articles = allContent.filter(
+  (a) =>
+    a.data.category === 'clash' ||
+    topic.clusters.some((c) => c.coreArticleSlug === a.slug)
+);
+---
+
+<TopicLayout topic={topic} articles={articles} />

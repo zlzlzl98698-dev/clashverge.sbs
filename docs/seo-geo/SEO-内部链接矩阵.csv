@@ -1,0 +1,293 @@
+﻿源页面类型,源页面URL,目标页面类型,目标页面URL,推荐锚文本,内链逻辑说明
+一级频道,/airport/,二级专题,/airport/recommend/,机场推荐专题,Pillar -> Cluster 纵向分发
+二级专题,/airport/recommend/,核心文章,/articles/2026-airport-recommendation-pillar-guide/,2026 综合型主力机场选型集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/2026-airport-recommendation-pillar-guide/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/airport/,二级专题,/airport/recommend/,机场推荐专题,Pillar -> Cluster 纵向分发
+二级专题,/airport/recommend/,核心文章,/articles/2026-airport-recommendation-pillar-guide/,新手免配置专属客户端机场集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/2026-airport-recommendation-pillar-guide/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/airport/,二级专题,/airport/ranking/,机场排行专题,Pillar -> Cluster 纵向分发
+二级专题,/airport/ranking/,核心文章,/articles/2026-airport-recommendation-pillar-guide/,亚太节点（港/新/日/台）实测速率排名集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/2026-airport-recommendation-pillar-guide/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/airport/,二级专题,/airport/ranking/,机场排行专题,Pillar -> Cluster 纵向分发
+二级专题,/airport/ranking/,核心文章,/articles/guangsuyun-vs-feimao-weifeng-firefly-comparison/,AI 生产力与流媒体全解锁能力排行集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/guangsuyun-vs-feimao-weifeng-firefly-comparison/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/airport/,二级专题,/airport/value/,性价比机场专题,Pillar -> Cluster 纵向分发
+二级专题,/airport/value/,核心文章,/articles/guangsuyun-vs-feimao-weifeng-firefly-comparison/,20元月付黄金档（120GB–168GB）横向精算集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/guangsuyun-vs-feimao-weifeng-firefly-comparison/,品牌评测,/brands/weitu/,查看weitu核实评测档案,Article -> Brand Review 商业转化
+一级频道,/airport/,二级专题,/airport/value/,性价比机场专题,Pillar -> Cluster 纵向分发
+二级专题,/airport/value/,核心文章,/articles/guangsuyun-in-depth-review-2026/,一次性永久/不限时流量包性价比集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/guangsuyun-in-depth-review-2026/,品牌评测,/brands/weitu/,查看weitu核实评测档案,Article -> Brand Review 商业转化
+一级频道,/airport/,二级专题,/airport/stable/,稳定机场专题,Pillar -> Cluster 纵向分发
+二级专题,/airport/stable/,核心文章,/articles/2026-airport-recommendation-pillar-guide/,IEPL 与 IPLC 专线技术架构深度解析集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/2026-airport-recommendation-pillar-guide/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/airport/,二级专题,/airport/stable/,稳定机场专题,Pillar -> Cluster 纵向分发
+二级专题,/airport/stable/,核心文章,/articles/guangsuyun-in-depth-review-2026/,老牌存续机场（2020–2023开业）抗风险选型集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/guangsuyun-in-depth-review-2026/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/airport/,二级专题,/airport/cheap/,便宜机场专题,Pillar -> Cluster 纵向分发
+二级专题,/airport/cheap/,核心文章,/articles/cheap-airports-5-to-10-yuan-audit/,5.6元极限平价同规格矩阵（qwerty系）审计集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/cheap-airports-5-to-10-yuan-audit/,品牌评测,/brands/shandianshu/,查看shandianshu核实评测档案,Article -> Brand Review 商业转化
+一级频道,/airport/,二级专题,/airport/cheap/,便宜机场专题,Pillar -> Cluster 纵向分发
+二级专题,/airport/cheap/,核心文章,/articles/cheap-airports-5-to-10-yuan-audit/,7–10元/月（年付80–100元）实测入门小包集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/cheap-airports-5-to-10-yuan-audit/,品牌评测,/brands/shandianshu/,查看shandianshu核实评测档案,Article -> Brand Review 商业转化
+一级频道,/airport/,二级专题,/airport/free-ladder/,免费梯子专题,Pillar -> Cluster 纵向分发
+二级专题,/airport/free-ladder/,核心文章,/articles/airport-risk-runaway-warning-and-faq/,免费梯子四大安全隐患与流量审计集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/airport-risk-runaway-warning-and-faq/,品牌评测,/brands/wuyou/,查看wuyou核实评测档案,Article -> Brand Review 商业转化
+一级频道,/airport/,二级专题,/airport/free-ladder/,免费梯子专题,Pillar -> Cluster 纵向分发
+二级专题,/airport/free-ladder/,核心文章,/articles/cheap-airports-5-to-10-yuan-audit/,日均两毛钱的低门槛付费平替方案集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/cheap-airports-5-to-10-yuan-audit/,品牌评测,/brands/wuyou/,查看wuyou核实评测档案,Article -> Brand Review 商业转化
+一级频道,/airport/,二级专题,/airport/bypass/,科学上网专题,Pillar -> Cluster 纵向分发
+二级专题,/airport/bypass/,核心文章,/articles/2026-airport-recommendation-pillar-guide/,科学上网三要素与零基础三步上手集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/2026-airport-recommendation-pillar-guide/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/airport/,二级专题,/airport/bypass/,科学上网专题,Pillar -> Cluster 纵向分发
+二级专题,/airport/bypass/,核心文章,/articles/vpn-vs-airport-proxy-architecture-guide/,VLESS、Trojan、Hysteria 2 与 Shadowsocks 协议演进集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/vpn-vs-airport-proxy-architecture-guide/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/vpn/,二级专题,/vpn/recommend/,VPN 推荐专题,Pillar -> Cluster 纵向分发
+二级专题,/vpn/recommend/,核心文章,/articles/vpn-vs-airport-proxy-architecture-guide/,中国大陆可用一键客户端型专线 VPN 集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/vpn-vs-airport-proxy-architecture-guide/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/vpn/,二级专题,/vpn/recommend/,VPN 推荐专题,Pillar -> Cluster 纵向分发
+二级专题,/vpn/recommend/,核心文章,/articles/vpn-vs-airport-proxy-architecture-guide/,跨境远程办公与多地区 IP 切换 VPN 集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/vpn-vs-airport-proxy-architecture-guide/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/vpn/,二级专题,/vpn/free/,免费 VPN专题,Pillar -> Cluster 纵向分发
+二级专题,/vpn/free/,核心文章,/articles/vpn-vs-airport-proxy-architecture-guide/,商业免费 VPN 限制与隐私条款拆解集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/vpn-vs-airport-proxy-architecture-guide/,品牌评测,/brands/wuyou/,查看wuyou核实评测档案,Article -> Brand Review 商业转化
+一级频道,/vpn/,二级专题,/vpn/free/,免费 VPN专题,Pillar -> Cluster 纵向分发
+二级专题,/vpn/free/,核心文章,/articles/cheap-airports-5-to-10-yuan-audit/,学生党与轻度用户超低成本合规替代集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/cheap-airports-5-to-10-yuan-audit/,品牌评测,/brands/wuyou/,查看wuyou核实评测档案,Article -> Brand Review 商业转化
+一级频道,/vpn/,二级专题,/vpn/mobile/,手机 VPN专题,Pillar -> Cluster 纵向分发
+二级专题,/vpn/mobile/,核心文章,/articles/android-vpn-and-clash-client-guide/,Android 安卓手机代理客户端选型与防伪集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/android-vpn-and-clash-client-guide/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/vpn/,二级专题,/vpn/mobile/,手机 VPN专题,Pillar -> Cluster 纵向分发
+二级专题,/vpn/mobile/,核心文章,/articles/ios-shadowrocket-stash-guide/,iPhone / iPad (iOS) 代理软件与非国区 Apple ID 指南集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/ios-shadowrocket-stash-guide/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/vpn/,二级专题,/vpn/reviews/,VPN 软件评测专题,Pillar -> Cluster 纵向分发
+二级专题,/vpn/reviews/,核心文章,/articles/guangsuyun-vs-feimao-weifeng-firefly-comparison/,仅限专属客户端品牌（Firefly/SOGO/隐形人/闪跃）横评集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/guangsuyun-vs-feimao-weifeng-firefly-comparison/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/vpn/,二级专题,/vpn/reviews/,VPN 软件评测专题,Pillar -> Cluster 纵向分发
+二级专题,/vpn/reviews/,核心文章,/articles/guangsuyun-in-depth-review-2026/,自研客户端 + 通用订阅双轨制品牌评测集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/guangsuyun-in-depth-review-2026/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/vpn/,二级专题,/vpn/accelerator/,VPN 加速器专题,Pillar -> Cluster 纵向分发
+二级专题,/vpn/accelerator/,核心文章,/articles/guangsuyun-vs-feimao-weifeng-firefly-comparison/,20ms 级超低延迟亚太专线加速集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/guangsuyun-vs-feimao-weifeng-firefly-comparison/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/vpn/,二级专题,/vpn/accelerator/,VPN 加速器专题,Pillar -> Cluster 纵向分发
+二级专题,/vpn/accelerator/,核心文章,/articles/guangsuyun-in-depth-review-2026/,TikTok 跨区运营与流媒体 4K 高带宽加速集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/guangsuyun-in-depth-review-2026/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/vpn/,二级专题,/vpn/comparison/,加速器对比专题,Pillar -> Cluster 纵向分发
+二级专题,/vpn/comparison/,核心文章,/articles/vpn-vs-airport-proxy-architecture-guide/,传统商业 VPN vs 中文区专线机场架构对比集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/vpn-vs-airport-proxy-architecture-guide/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/vpn/,二级专题,/vpn/comparison/,加速器对比专题,Pillar -> Cluster 纵向分发
+二级专题,/vpn/comparison/,核心文章,/articles/guangsuyun-in-depth-review-2026/,不同价位档专线品牌（8元档 vs 20元档 vs 定制档）对比集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/guangsuyun-in-depth-review-2026/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/vpn/,二级专题,/vpn/best/,好用的 VPN专题,Pillar -> Cluster 纵向分发
+二级专题,/vpn/best/,核心文章,/articles/guangsuyun-vs-feimao-weifeng-firefly-comparison/,ChatGPT / Claude / Gemini 重度 AI 生产力选型集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/guangsuyun-vs-feimao-weifeng-firefly-comparison/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/vpn/,二级专题,/vpn/best/,好用的 VPN专题,Pillar -> Cluster 纵向分发
+二级专题,/vpn/best/,核心文章,/articles/2026-airport-recommendation-pillar-guide/,家庭多设备与小团队不限终端连接选型集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/2026-airport-recommendation-pillar-guide/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/clash/,二级专题,/clash/recommend/,Clash 推荐专题,Pillar -> Cluster 纵向分发
+二级专题,/clash/recommend/,核心文章,/articles/clash-clients-selection-guide/,桌面端（Windows / macOS / Linux）客户端选型集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/clash-clients-selection-guide/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/clash/,二级专题,/clash/recommend/,Clash 推荐专题,Pillar -> Cluster 纵向分发
+二级专题,/clash/recommend/,核心文章,/articles/openwrt-openclash-passwall2-guide/,移动端（Android / iOS）与软路由（OpenWrt）客户端选型集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/openwrt-openclash-passwall2-guide/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/clash/,二级专题,/clash/verge/,Clash Verge专题,Pillar -> Cluster 纵向分发
+二级专题,/clash/verge/,核心文章,/articles/clash-verge-rev-complete-guide/,Clash Verge Rev 核心架构与正统分支辨析集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/clash-verge-rev-complete-guide/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/clash/,二级专题,/clash/verge/,Clash Verge专题,Pillar -> Cluster 纵向分发
+二级专题,/clash/verge/,核心文章,/articles/clash-verge-rev-complete-guide/,Clash Verge Rev 进阶功能（TUN 模式 / Merge 覆写 / 服务模式）集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/clash-verge-rev-complete-guide/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/clash/,二级专题,/clash/download/,Clash Verge 下载专题,Pillar -> Cluster 纵向分发
+二级专题,/clash/download/,核心文章,/articles/clash-verge-rev-complete-guide/,Windows / macOS / Linux 安装包架构对应表与防钓鱼集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/clash-verge-rev-complete-guide/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/clash/,二级专题,/clash/download/,Clash Verge 下载专题,Pillar -> Cluster 纵向分发
+二级专题,/clash/download/,核心文章,/articles/windows-clash-and-v2rayn-comparison/,全平台客户端（v2rayN / FlClash / v2rayNG / Hiddify）官方渠道索引集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/windows-clash-and-v2rayn-comparison/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/clash/,二级专题,/clash/subscription/,Clash Verge 订阅专题,Pillar -> Cluster 纵向分发
+二级专题,/clash/subscription/,核心文章,/articles/clash-verge-rev-complete-guide/,Clash 订阅链接导入、定时更新与多机场切换集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/clash-verge-rev-complete-guide/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/clash/,二级专题,/clash/subscription/,Clash Verge 订阅专题,Pillar -> Cluster 纵向分发
+二级专题,/clash/subscription/,核心文章,/articles/clash-subscription-error-troubleshooting-guide/,通用订阅机场 vs 专属客户端机场兼容性对照集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/clash-subscription-error-troubleshooting-guide/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/clash/,二级专题,/clash/meta/,Clash Meta专题,Pillar -> Cluster 纵向分发
+二级专题,/clash/meta/,核心文章,/articles/clash-meta-mihomo-core-guide/,Mihomo (Clash.Meta) 内核协议栈与核心升级集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/clash-meta-mihomo-core-guide/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/clash/,二级专题,/clash/meta/,Clash Meta专题,Pillar -> Cluster 纵向分发
+二级专题,/clash/meta/,核心文章,/articles/clash-meta-mihomo-core-guide/,Geosite / GeoIP 规则数据库与 Fake-IP DNS 分流集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/clash-meta-mihomo-core-guide/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/clash/,二级专题,/clash/tutorial/,Clash 使用教程专题,Pillar -> Cluster 纵向分发
+二级专题,/clash/tutorial/,核心文章,/articles/clash-verge-rev-complete-guide/,Rule / Global / Direct 三大代理模式与节点选择集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/clash-verge-rev-complete-guide/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/clash/,二级专题,/clash/tutorial/,Clash 使用教程专题,Pillar -> Cluster 纵向分发
+二级专题,/clash/tutorial/,核心文章,/articles/openwrt-openclash-passwall2-guide/,局域网共享（Allow LAN）、终端代理与软路由联动集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/openwrt-openclash-passwall2-guide/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/clash/,二级专题,/clash/troubleshooting/,Clash 故障排查专题,Pillar -> Cluster 纵向分发
+二级专题,/clash/troubleshooting/,核心文章,/articles/clash-subscription-error-troubleshooting-guide/,订阅导入报错与 YAML 格式解析失败排障集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/clash-subscription-error-troubleshooting-guide/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/clash/,二级专题,/clash/troubleshooting/,Clash 故障排查专题,Pillar -> Cluster 纵向分发
+二级专题,/clash/troubleshooting/,核心文章,/articles/clash-subscription-error-troubleshooting-guide/,节点全部 Timeout 超时与系统代理断网急救集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/clash-subscription-error-troubleshooting-guide/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/resources/,二级专题,/resources/free-nodes/,免费节点专题,Pillar -> Cluster 纵向分发
+二级专题,/resources/free-nodes/,核心文章,/articles/airport-risk-runaway-warning-and-faq/,公开免费节点池抓取机制与安全边界集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/airport-risk-runaway-warning-and-faq/,品牌评测,/brands/wuyou/,查看wuyou核实评测档案,Article -> Brand Review 商业转化
+一级频道,/resources/,二级专题,/resources/free-nodes/,免费节点专题,Pillar -> Cluster 纵向分发
+二级专题,/resources/free-nodes/,核心文章,/articles/cheap-airports-5-to-10-yuan-audit/,低频用户 100GB 不限时永久包平替计算集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/cheap-airports-5-to-10-yuan-audit/,品牌评测,/brands/wuyou/,查看wuyou核实评测档案,Article -> Brand Review 商业转化
+一级频道,/resources/,二级专题,/resources/runaway-warning/,跑路预警专题,Pillar -> Cluster 纵向分发
+二级专题,/resources/runaway-warning/,核心文章,/articles/airport-risk-runaway-warning-and-faq/,机场跑路前六大高危信号识别集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/airport-risk-runaway-warning-and-faq/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/resources/,二级专题,/resources/runaway-warning/,跑路预警专题,Pillar -> Cluster 纵向分发
+二级专题,/resources/runaway-warning/,核心文章,/articles/airport-risk-runaway-warning-and-faq/,主备机场双持方案与付费周期风控集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/airport-risk-runaway-warning-and-faq/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/resources/,二级专题,/resources/faq/,机场 FAQ专题,Pillar -> Cluster 纵向分发
+二级专题,/resources/faq/,核心文章,/articles/airport-risk-runaway-warning-and-faq/,套餐计费黑话（年付折算、节点倍率、重置周期）拆解集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/airport-risk-runaway-warning-and-faq/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/resources/,二级专题,/resources/faq/,机场 FAQ专题,Pillar -> Cluster 纵向分发
+二级专题,/resources/faq/,核心文章,/articles/airport-risk-runaway-warning-and-faq/,网络与解锁黑话（原生 IP / 住宅 IP / 送中 / 识别偏欧）拆解集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/airport-risk-runaway-warning-and-faq/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/resources/,二级专题,/resources/risk-intelligence/,机场风险情报专题,Pillar -> Cluster 纵向分发
+二级专题,/resources/risk-intelligence/,核心文章,/articles/cheap-airports-5-to-10-yuan-audit/,31 家品牌同系矩阵与联盟域名拓扑审计集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/cheap-airports-5-to-10-yuan-audit/,品牌评测,/brands/firefly/,查看firefly核实评测档案,Article -> Brand Review 商业转化
+一级频道,/resources/,二级专题,/resources/risk-intelligence/,机场风险情报专题,Pillar -> Cluster 纵向分发
+二级专题,/resources/risk-intelligence/,核心文章,/articles/airport-risk-runaway-warning-and-faq/,待核实品牌（宇宙云 / 浪网 / 隐形人测速）与商家承诺透明度审计集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/airport-risk-runaway-warning-and-faq/,品牌评测,/brands/firefly/,查看firefly核实评测档案,Article -> Brand Review 商业转化
+一级频道,/resources/,二级专题,/resources/node-test/,节点检测专题,Pillar -> Cluster 纵向分发
+二级专题,/resources/node-test/,核心文章,/articles/clash-subscription-error-troubleshooting-guide/,延迟（Latency）vs 带宽（Bandwidth）vs 晚高峰丢包自测集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/clash-subscription-error-troubleshooting-guide/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/resources/,二级专题,/resources/node-test/,节点检测专题,Pillar -> Cluster 纵向分发
+二级专题,/resources/node-test/,核心文章,/articles/clash-meta-mihomo-core-guide/,原生 IP 鉴定、AI 风控纯净度与 DNS 泄露检测集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/clash-meta-mihomo-core-guide/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/resources/,二级专题,/resources/subscription-issues/,订阅问题专题,Pillar -> Cluster 纵向分发
+二级专题,/resources/subscription-issues/,核心文章,/articles/clash-subscription-error-troubleshooting-guide/,订阅域名被阻断与客户端拉取超时急救集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/clash-subscription-error-troubleshooting-guide/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/resources/,二级专题,/resources/subscription-issues/,订阅问题专题,Pillar -> Cluster 纵向分发
+二级专题,/resources/subscription-issues/,核心文章,/articles/clash-subscription-error-troubleshooting-guide/,订阅 Token 防盗刷与专属客户端模式辨析集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/clash-subscription-error-troubleshooting-guide/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/resources/,二级专题,/resources/beginner-help/,新手帮助专题,Pillar -> Cluster 纵向分发
+二级专题,/resources/beginner-help/,核心文章,/articles/2026-airport-recommendation-pillar-guide/,零基础小白首单选型与防骗 Checklist 集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/2026-airport-recommendation-pillar-guide/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+一级频道,/resources/,二级专题,/resources/beginner-help/,新手帮助专题,Pillar -> Cluster 纵向分发
+二级专题,/resources/beginner-help/,核心文章,/articles/clash-verge-rev-complete-guide/,全平台（Windows / Mac / 安卓 / iOS）首装快速通道集群核心指南,Cluster -> Article 核心承接
+核心文章,/articles/clash-verge-rev-complete-guide/,品牌评测,/brands/guangsuyun/,查看guangsuyun核实评测档案,Article -> Brand Review 商业转化
+品牌数据库,/brands/,品牌详情页,/brands/guangsuyun/,光速云评测与套餐档案,品牌库 -> 品牌详情分发
+品牌详情页,/brands/guangsuyun/,横向对比页,/comparisons/,与其他品牌横向对比,Brand Review -> Comparison
+品牌详情页,/brands/guangsuyun/,客户端教程,/clash/verge/,Clash Verge Rev配置教程,Brand Review -> Client Guide
+品牌详情页,/brands/guangsuyun/,风险预警页,/resources/runaway-warning/,查看跑路预警与主备建议,Brand Review -> Risk Warning
+品牌数据库,/brands/,品牌详情页,/brands/muguang/,暮光加速评测与套餐档案,品牌库 -> 品牌详情分发
+品牌详情页,/brands/muguang/,横向对比页,/comparisons/,与其他品牌横向对比,Brand Review -> Comparison
+品牌详情页,/brands/muguang/,客户端教程,/clash/verge/,Clash Verge Rev配置教程,Brand Review -> Client Guide
+品牌详情页,/brands/muguang/,风险预警页,/resources/runaway-warning/,查看跑路预警与主备建议,Brand Review -> Risk Warning
+品牌数据库,/brands/,品牌详情页,/brands/feimao/,飞猫云评测与套餐档案,品牌库 -> 品牌详情分发
+品牌详情页,/brands/feimao/,横向对比页,/comparisons/,与其他品牌横向对比,Brand Review -> Comparison
+品牌详情页,/brands/feimao/,客户端教程,/clash/verge/,Clash Verge Rev配置教程,Brand Review -> Client Guide
+品牌详情页,/brands/feimao/,风险预警页,/resources/runaway-warning/,查看跑路预警与主备建议,Brand Review -> Risk Warning
+品牌数据库,/brands/,品牌详情页,/brands/weifeng/,微风网络评测与套餐档案,品牌库 -> 品牌详情分发
+品牌详情页,/brands/weifeng/,横向对比页,/comparisons/,与其他品牌横向对比,Brand Review -> Comparison
+品牌详情页,/brands/weifeng/,客户端教程,/clash/verge/,Clash Verge Rev配置教程,Brand Review -> Client Guide
+品牌详情页,/brands/weifeng/,风险预警页,/resources/runaway-warning/,查看跑路预警与主备建议,Brand Review -> Risk Warning
+品牌数据库,/brands/,品牌详情页,/brands/dalaoyun/,大佬云评测与套餐档案,品牌库 -> 品牌详情分发
+品牌详情页,/brands/dalaoyun/,横向对比页,/comparisons/,与其他品牌横向对比,Brand Review -> Comparison
+品牌详情页,/brands/dalaoyun/,客户端教程,/clash/verge/,Clash Verge Rev配置教程,Brand Review -> Client Guide
+品牌详情页,/brands/dalaoyun/,风险预警页,/resources/runaway-warning/,查看跑路预警与主备建议,Brand Review -> Risk Warning
+品牌数据库,/brands/,品牌详情页,/brands/xingdaomeng/,星岛梦评测与套餐档案,品牌库 -> 品牌详情分发
+品牌详情页,/brands/xingdaomeng/,横向对比页,/comparisons/,与其他品牌横向对比,Brand Review -> Comparison
+品牌详情页,/brands/xingdaomeng/,客户端教程,/clash/verge/,Clash Verge Rev配置教程,Brand Review -> Client Guide
+品牌详情页,/brands/xingdaomeng/,风险预警页,/resources/runaway-warning/,查看跑路预警与主备建议,Brand Review -> Risk Warning
+品牌数据库,/brands/,品牌详情页,/brands/ermao/,二猫云评测与套餐档案,品牌库 -> 品牌详情分发
+品牌详情页,/brands/ermao/,横向对比页,/comparisons/,与其他品牌横向对比,Brand Review -> Comparison
+品牌详情页,/brands/ermao/,客户端教程,/clash/verge/,Clash Verge Rev配置教程,Brand Review -> Client Guide
+品牌详情页,/brands/ermao/,风险预警页,/resources/runaway-warning/,查看跑路预警与主备建议,Brand Review -> Risk Warning
+品牌数据库,/brands/,品牌详情页,/brands/wuyou/,无忧链接评测与套餐档案,品牌库 -> 品牌详情分发
+品牌详情页,/brands/wuyou/,横向对比页,/comparisons/,与其他品牌横向对比,Brand Review -> Comparison
+品牌详情页,/brands/wuyou/,客户端教程,/clash/verge/,Clash Verge Rev配置教程,Brand Review -> Client Guide
+品牌详情页,/brands/wuyou/,风险预警页,/resources/runaway-warning/,查看跑路预警与主备建议,Brand Review -> Risk Warning
+品牌数据库,/brands/,品牌详情页,/brands/weitu/,唯兔云评测与套餐档案,品牌库 -> 品牌详情分发
+品牌详情页,/brands/weitu/,横向对比页,/comparisons/,与其他品牌横向对比,Brand Review -> Comparison
+品牌详情页,/brands/weitu/,客户端教程,/clash/verge/,Clash Verge Rev配置教程,Brand Review -> Client Guide
+品牌详情页,/brands/weitu/,风险预警页,/resources/runaway-warning/,查看跑路预警与主备建议,Brand Review -> Risk Warning
+品牌数据库,/brands/,品牌详情页,/brands/firefly/,Firefly（萤火虫）评测与套餐档案,品牌库 -> 品牌详情分发
+品牌详情页,/brands/firefly/,横向对比页,/comparisons/,与其他品牌横向对比,Brand Review -> Comparison
+品牌详情页,/brands/firefly/,客户端教程,/clash/verge/,Clash Verge Rev配置教程,Brand Review -> Client Guide
+品牌详情页,/brands/firefly/,风险预警页,/resources/runaway-warning/,查看跑路预警与主备建议,Brand Review -> Risk Warning
+品牌数据库,/brands/,品牌详情页,/brands/yuzhou/,宇宙云评测与套餐档案,品牌库 -> 品牌详情分发
+品牌详情页,/brands/yuzhou/,横向对比页,/comparisons/,与其他品牌横向对比,Brand Review -> Comparison
+品牌详情页,/brands/yuzhou/,客户端教程,/clash/verge/,Clash Verge Rev配置教程,Brand Review -> Client Guide
+品牌详情页,/brands/yuzhou/,风险预警页,/resources/runaway-warning/,查看跑路预警与主备建议,Brand Review -> Risk Warning
+品牌数据库,/brands/,品牌详情页,/brands/u1s1/,U1S1评测与套餐档案,品牌库 -> 品牌详情分发
+品牌详情页,/brands/u1s1/,横向对比页,/comparisons/,与其他品牌横向对比,Brand Review -> Comparison
+品牌详情页,/brands/u1s1/,客户端教程,/clash/verge/,Clash Verge Rev配置教程,Brand Review -> Client Guide
+品牌详情页,/brands/u1s1/,风险预警页,/resources/runaway-warning/,查看跑路预警与主备建议,Brand Review -> Risk Warning
+品牌数据库,/brands/,品牌详情页,/brands/lingmao/,灵猫网络评测与套餐档案,品牌库 -> 品牌详情分发
+品牌详情页,/brands/lingmao/,横向对比页,/comparisons/,与其他品牌横向对比,Brand Review -> Comparison
+品牌详情页,/brands/lingmao/,客户端教程,/clash/verge/,Clash Verge Rev配置教程,Brand Review -> Client Guide
+品牌详情页,/brands/lingmao/,风险预警页,/resources/runaway-warning/,查看跑路预警与主备建议,Brand Review -> Risk Warning
+品牌数据库,/brands/,品牌详情页,/brands/jilian/,极连云评测与套餐档案,品牌库 -> 品牌详情分发
+品牌详情页,/brands/jilian/,横向对比页,/comparisons/,与其他品牌横向对比,Brand Review -> Comparison
+品牌详情页,/brands/jilian/,客户端教程,/clash/verge/,Clash Verge Rev配置教程,Brand Review -> Client Guide
+品牌详情页,/brands/jilian/,风险预警页,/resources/runaway-warning/,查看跑路预警与主备建议,Brand Review -> Risk Warning
+品牌数据库,/brands/,品牌详情页,/brands/guangnian/,光年梯评测与套餐档案,品牌库 -> 品牌详情分发
+品牌详情页,/brands/guangnian/,横向对比页,/comparisons/,与其他品牌横向对比,Brand Review -> Comparison
+品牌详情页,/brands/guangnian/,客户端教程,/clash/verge/,Clash Verge Rev配置教程,Brand Review -> Client Guide
+品牌详情页,/brands/guangnian/,风险预警页,/resources/runaway-warning/,查看跑路预警与主备建议,Brand Review -> Risk Warning
+品牌数据库,/brands/,品牌详情页,/brands/yifan/,一翻云评测与套餐档案,品牌库 -> 品牌详情分发
+品牌详情页,/brands/yifan/,横向对比页,/comparisons/,与其他品牌横向对比,Brand Review -> Comparison
+品牌详情页,/brands/yifan/,客户端教程,/clash/verge/,Clash Verge Rev配置教程,Brand Review -> Client Guide
+品牌详情页,/brands/yifan/,风险预警页,/resources/runaway-warning/,查看跑路预警与主备建议,Brand Review -> Risk Warning
+品牌数据库,/brands/,品牌详情页,/brands/sogo/,SOGO 云评测与套餐档案,品牌库 -> 品牌详情分发
+品牌详情页,/brands/sogo/,横向对比页,/comparisons/,与其他品牌横向对比,Brand Review -> Comparison
+品牌详情页,/brands/sogo/,客户端教程,/clash/verge/,Clash Verge Rev配置教程,Brand Review -> Client Guide
+品牌详情页,/brands/sogo/,风险预警页,/resources/runaway-warning/,查看跑路预警与主备建议,Brand Review -> Risk Warning
+品牌数据库,/brands/,品牌详情页,/brands/kexin/,可信云评测与套餐档案,品牌库 -> 品牌详情分发
+品牌详情页,/brands/kexin/,横向对比页,/comparisons/,与其他品牌横向对比,Brand Review -> Comparison
+品牌详情页,/brands/kexin/,客户端教程,/clash/verge/,Clash Verge Rev配置教程,Brand Review -> Client Guide
+品牌详情页,/brands/kexin/,风险预警页,/resources/runaway-warning/,查看跑路预警与主备建议,Brand Review -> Risk Warning
+品牌数据库,/brands/,品牌详情页,/brands/sujie/,速界评测与套餐档案,品牌库 -> 品牌详情分发
+品牌详情页,/brands/sujie/,横向对比页,/comparisons/,与其他品牌横向对比,Brand Review -> Comparison
+品牌详情页,/brands/sujie/,客户端教程,/clash/verge/,Clash Verge Rev配置教程,Brand Review -> Client Guide
+品牌详情页,/brands/sujie/,风险预警页,/resources/runaway-warning/,查看跑路预警与主备建议,Brand Review -> Risk Warning
+品牌数据库,/brands/,品牌详情页,/brands/shanyue/,闪跃评测与套餐档案,品牌库 -> 品牌详情分发
+品牌详情页,/brands/shanyue/,横向对比页,/comparisons/,与其他品牌横向对比,Brand Review -> Comparison
+品牌详情页,/brands/shanyue/,客户端教程,/clash/verge/,Clash Verge Rev配置教程,Brand Review -> Client Guide
+品牌详情页,/brands/shanyue/,风险预警页,/resources/runaway-warning/,查看跑路预警与主备建议,Brand Review -> Risk Warning
+品牌数据库,/brands/,品牌详情页,/brands/quanqiu/,全球云评测与套餐档案,品牌库 -> 品牌详情分发
+品牌详情页,/brands/quanqiu/,横向对比页,/comparisons/,与其他品牌横向对比,Brand Review -> Comparison
+品牌详情页,/brands/quanqiu/,客户端教程,/clash/verge/,Clash Verge Rev配置教程,Brand Review -> Client Guide
+品牌详情页,/brands/quanqiu/,风险预警页,/resources/runaway-warning/,查看跑路预警与主备建议,Brand Review -> Risk Warning
+品牌数据库,/brands/,品牌详情页,/brands/shandianshu/,闪电鼠评测与套餐档案,品牌库 -> 品牌详情分发
+品牌详情页,/brands/shandianshu/,横向对比页,/comparisons/,与其他品牌横向对比,Brand Review -> Comparison
+品牌详情页,/brands/shandianshu/,客户端教程,/clash/verge/,Clash Verge Rev配置教程,Brand Review -> Client Guide
+品牌详情页,/brands/shandianshu/,风险预警页,/resources/runaway-warning/,查看跑路预警与主备建议,Brand Review -> Risk Warning
+品牌数据库,/brands/,品牌详情页,/brands/yunjiexian/,云界线评测与套餐档案,品牌库 -> 品牌详情分发
+品牌详情页,/brands/yunjiexian/,横向对比页,/comparisons/,与其他品牌横向对比,Brand Review -> Comparison
+品牌详情页,/brands/yunjiexian/,客户端教程,/clash/verge/,Clash Verge Rev配置教程,Brand Review -> Client Guide
+品牌详情页,/brands/yunjiexian/,风险预警页,/resources/runaway-warning/,查看跑路预警与主备建议,Brand Review -> Risk Warning
+品牌数据库,/brands/,品牌详情页,/brands/liulianyun/,榴莲云评测与套餐档案,品牌库 -> 品牌详情分发
+品牌详情页,/brands/liulianyun/,横向对比页,/comparisons/,与其他品牌横向对比,Brand Review -> Comparison
+品牌详情页,/brands/liulianyun/,客户端教程,/clash/verge/,Clash Verge Rev配置教程,Brand Review -> Client Guide
+品牌详情页,/brands/liulianyun/,风险预警页,/resources/runaway-warning/,查看跑路预警与主备建议,Brand Review -> Risk Warning
+品牌数据库,/brands/,品牌详情页,/brands/shenxing/,神行加速评测与套餐档案,品牌库 -> 品牌详情分发
+品牌详情页,/brands/shenxing/,横向对比页,/comparisons/,与其他品牌横向对比,Brand Review -> Comparison
+品牌详情页,/brands/shenxing/,客户端教程,/clash/verge/,Clash Verge Rev配置教程,Brand Review -> Client Guide
+品牌详情页,/brands/shenxing/,风险预警页,/resources/runaway-warning/,查看跑路预警与主备建议,Brand Review -> Risk Warning
+品牌数据库,/brands/,品牌详情页,/brands/huanqiuti/,环球梯评测与套餐档案,品牌库 -> 品牌详情分发
+品牌详情页,/brands/huanqiuti/,横向对比页,/comparisons/,与其他品牌横向对比,Brand Review -> Comparison
+品牌详情页,/brands/huanqiuti/,客户端教程,/clash/verge/,Clash Verge Rev配置教程,Brand Review -> Client Guide
+品牌详情页,/brands/huanqiuti/,风险预警页,/resources/runaway-warning/,查看跑路预警与主备建议,Brand Review -> Risk Warning
+品牌数据库,/brands/,品牌详情页,/brands/yinxingren/,隐形人评测与套餐档案,品牌库 -> 品牌详情分发
+品牌详情页,/brands/yinxingren/,横向对比页,/comparisons/,与其他品牌横向对比,Brand Review -> Comparison
+品牌详情页,/brands/yinxingren/,客户端教程,/clash/verge/,Clash Verge Rev配置教程,Brand Review -> Client Guide
+品牌详情页,/brands/yinxingren/,风险预警页,/resources/runaway-warning/,查看跑路预警与主备建议,Brand Review -> Risk Warning
+品牌数据库,/brands/,品牌详情页,/brands/tiziyun/,梯子云评测与套餐档案,品牌库 -> 品牌详情分发
+品牌详情页,/brands/tiziyun/,横向对比页,/comparisons/,与其他品牌横向对比,Brand Review -> Comparison
+品牌详情页,/brands/tiziyun/,客户端教程,/clash/verge/,Clash Verge Rev配置教程,Brand Review -> Client Guide
+品牌详情页,/brands/tiziyun/,风险预警页,/resources/runaway-warning/,查看跑路预警与主备建议,Brand Review -> Risk Warning
+品牌数据库,/brands/,品牌详情页,/brands/lingdong/,灵动云评测与套餐档案,品牌库 -> 品牌详情分发
+品牌详情页,/brands/lingdong/,横向对比页,/comparisons/,与其他品牌横向对比,Brand Review -> Comparison
+品牌详情页,/brands/lingdong/,客户端教程,/clash/verge/,Clash Verge Rev配置教程,Brand Review -> Client Guide
+品牌详情页,/brands/lingdong/,风险预警页,/resources/runaway-warning/,查看跑路预警与主备建议,Brand Review -> Risk Warning
+品牌数据库,/brands/,品牌详情页,/brands/langwang/,浪网评测与套餐档案,品牌库 -> 品牌详情分发
+品牌详情页,/brands/langwang/,横向对比页,/comparisons/,与其他品牌横向对比,Brand Review -> Comparison
+品牌详情页,/brands/langwang/,客户端教程,/clash/verge/,Clash Verge Rev配置教程,Brand Review -> Client Guide
+品牌详情页,/brands/langwang/,风险预警页,/resources/runaway-warning/,查看跑路预警与主备建议,Brand Review -> Risk Warning
+品牌数据库,/brands/,品牌详情页,/brands/edgenova/,边缘节点 EdgeNova评测与套餐档案,品牌库 -> 品牌详情分发
+品牌详情页,/brands/edgenova/,横向对比页,/comparisons/,与其他品牌横向对比,Brand Review -> Comparison
+品牌详情页,/brands/edgenova/,客户端教程,/clash/verge/,Clash Verge Rev配置教程,Brand Review -> Client Guide
+品牌详情页,/brands/edgenova/,风险预警页,/resources/runaway-warning/,查看跑路预警与主备建议,Brand Review -> Risk Warning

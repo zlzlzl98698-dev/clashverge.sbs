@@ -1,0 +1,49 @@
+---
+import ArticleLayout from './ArticleLayout.astro';
+import type { Props as ArticleLayoutProps } from './ArticleLayout.astro';
+import { getBrandBySlug } from '../data/brands';
+
+export interface Props extends ArticleLayoutProps {}
+
+const props = Astro.props;
+const comparedBrands = (props.item.data.relatedBrands || [])
+  .map((s) => getBrandBySlug(s))
+  .filter((b): b is NonNullable<typeof b> => Boolean(b));
+---
+
+<ArticleLayout {...props}>
+  {comparedBrands.length > 1 && (
+    <div class="my-6 overflow-x-auto bg-[#F7F9FC] border border-[#E5EAF1] rounded-2xl p-4">
+      <p class="text-xs font-bold uppercase tracking-wider text-[#2563EB] mb-3">
+        📊 本文横向对比核心品牌速览表（核实批次：2026-10-19）
+      </p>
+      <table class="w-full text-left border-collapse text-xs">
+        <thead>
+          <tr class="bg-white border-b border-[#E5EAF1] font-bold text-[#172033]">
+            <th class="py-2.5 px-3">品牌</th>
+            <th class="py-2.5 px-3">开业年份</th>
+            <th class="py-2.5 px-3">入门参考价</th>
+            <th class="py-2.5 px-3">线路/协议</th>
+            <th class="py-2.5 px-3">客户端方式</th>
+            <th class="py-2.5 px-3">档案详情</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-[#E5EAF1] bg-white">
+          {comparedBrands.map((b) => (
+            <tr>
+              <td class="py-2.5 px-3 font-bold text-[#172033]">{b.name}</td>
+              <td class="py-2.5 px-3">{b.foundedYear}</td>
+              <td class="py-2.5 px-3">{b.entryPriceLabel.split('·')[0]}</td>
+              <td class="py-2.5 px-3">{b.lineCategory} ({b.protocols[0]})</td>
+              <td class="py-2.5 px-3 text-[#2563EB] font-medium">{b.clientSupport}</td>
+              <td class="py-2.5 px-3">
+                <a href={`/brands/${b.slug}/`} class="text-[#2563EB] font-bold hover:underline">查看 →</a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )}
+  <slot />
+</ArticleLayout>

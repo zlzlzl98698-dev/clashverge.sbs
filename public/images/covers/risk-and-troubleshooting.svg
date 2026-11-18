@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
+  <rect width="800" height="450" fill="#0B1221"/>
+  <rect x="60" y="60" width="680" height="330" rx="16" fill="#111C33" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="95" y="110" fill="#F87171" font-family="monospace" font-size="14">RISK RADAR &amp; TROUBLESHOOTING // DIAGNOSTICS</text>
+  <rect x="95" y="140" width="610" height="62" rx="8" fill="#0B1221" stroke="#1E2D4A"/>
+  <text x="120" y="177" fill="#F59E0B" font-family="monospace" font-size="15">[WARN] 警惕骨折三年付促销 · 识别 qwerty 同系换壳矩阵</text>
+  <rect x="95" y="220" width="610" height="62" rx="8" fill="#0B1221" stroke="#1E2D4A"/>
+  <text x="120" y="257" fill="#38BDF8" font-family="monospace" font-size="15">[FIX] 节点全 Timeout -&gt; 同步系统 NTP 时间 &amp; 切换 Mihomo 内核</text>
+  <rect x="95" y="300" width="610" height="55" rx="8" fill="#0B1221" stroke="#1E2D4A"/>
+  <text x="120" y="333" fill="#10B981" font-family="monospace" font-size="15">[SAFE] 主力月付/年付 + 异构百元不限时包双持防失联</text>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
+  <rect width="800" height="450" fill="#0B1221"/>
+  <g opacity="0.2" stroke="#1E2D4A" stroke-width="1">
+    <line x1="0" y1="90" x2="800" y2="90"/><line x1="0" y1="180" x2="800" y2="180"/><line x1="0" y1="270" x2="800" y2="270"/><line x1="0" y1="360" x2="800" y2="360"/>
+    <line x1="160" y1="0" x2="160" y2="450"/><line x1="320" y1="0" x2="320" y2="450"/><line x1="480" y1="0" x2="480" y2="450"/><line x1="640" y1="0" x2="640" y2="450"/>
+  </g>
+  <rect x="60" y="60" width="680" height="330" rx="16" fill="#111C33" stroke="#2563EB" stroke-width="1.5"/>
+  <circle cx="190" cy="225" r="56" fill="#1E3A8A" stroke="#38BDF8" stroke-width="2"/>
+  <path d="M246 225H530" stroke="#38BDF8" stroke-width="4" stroke-dasharray="10 6"/>
+  <rect x="330" y="195" width="120" height="60" rx="10" fill="#0F172A" stroke="#10B981" stroke-width="2"/>
+  <text x="390" y="230" fill="#10B981" font-family="monospace" font-size="16" font-weight="bold" text-anchor="middle">IEPL 22ms</text>
+  <circle cx="590" cy="225" r="56" fill="#0F172A" stroke="#2563EB" stroke-width="2"/>
+  <text x="190" y="230" fill="#E2E8F0" font-family="sans-serif" font-size="15" font-weight="bold" text-anchor="middle">BGP 入口</text>
+  <text x="590" y="230" fill="#38BDF8" font-family="sans-serif" font-size="15" font-weight="bold" text-anchor="middle">原生 IP 落地</text>
+  <text x="96" y="108" fill="#94A3B8" font-family="monospace" font-size="13">OBSERVATORY // 2026 NETWORK TOPOLOGY &amp; BENCHMARK</text>
+</svg>

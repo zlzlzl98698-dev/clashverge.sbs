@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { getAllPublishedContent } from '../../utils/content';
+
+const allContent = await getAllPublishedContent();
+const comparisons = allContent.filter((a) => a.collection === 'comparisons' || a.slug.includes('comparison') || a.slug.includes('audit'));
+const breadcrumbs = [
+  { name: '首页', href: '/' },
+  { name: '横向对比矩阵', href: '/comparisons/' },
+];
+---
+
+<BaseLayout
+  title="机场与客户端横向对比中心：光速云 vs 飞猫云 vs 微风网络 vs Firefly | 订阅指南"
+  description="提供多品牌同台横向对比、5.6元便宜机场同系审计、传统 VPN vs 专线机场对比及 Windows 客户端横评。"
+  canonical="/comparisons/"
+  breadcrumbs={breadcrumbs}
+  schemaType="CollectionPage"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
+    <Breadcrumb items={breadcrumbs} />
+    <header class="p-6 sm:p-9 rounded-3xl bg-[#F7F9FC] border border-[#E5EAF1] space-y-3">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-[#172033]">
+        多品牌横向对比与同系去伪审计中心
+      </h1>
+      <p class="text-base text-[#64748B] max-w-3xl">
+        将价格相近、定位容易混淆的品牌放在同一张实测表格中逐项对比，帮你看清同系换壳与核心差异。
+      </p>
+    </header>
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {comparisons.map((item) => (
+        <ArticleCard item={item} />
+      ))}
+    </section>
+  </div>
+</BaseLayout>

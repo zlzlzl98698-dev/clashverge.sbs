@@ -1,0 +1,27 @@
+---
+import '../styles/global.css';
+import SEOHead from '../components/SEOHead.astro';
+import type { Props as SEOProps } from '../components/SEOHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+export interface Props extends SEOProps {
+  pagefindIgnore?: boolean;
+}
+
+const { pagefindIgnore = false, ...seoProps } = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-CN" id="top">
+  <head>
+    <SEOHead {...seoProps} />
+  </head>
+  <body class="min-h-[100dvh] flex flex-col bg-[#FFFFFF] text-[#172033]">
+    <Header />
+    <main class="flex-1" data-pagefind-body={pagefindIgnore ? undefined : ''}>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

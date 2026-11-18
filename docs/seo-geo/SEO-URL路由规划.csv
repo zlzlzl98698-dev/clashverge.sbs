@@ -1,0 +1,75 @@
+﻿路由URL,页面名称,页面分类,模板Layout,索引策略(robots),Sitemap收录,当前实现状态
+/,网站首页（17模块卡片式博客首页）,首页,HomeLayout.astro,"index,follow",是,已实现并上线
+/brands/,31家机场品牌评测数据库,品牌库,BaseLayout.astro,"index,follow",是,已实现并上线
+/articles/,原创文章总库,内容索引,BaseLayout.astro,"index,follow",是,已实现并上线
+/reviews/,深度评测中心,内容索引,BaseLayout.astro,"index,follow",是,已实现并上线
+/comparisons/,横向对比矩阵,内容索引,BaseLayout.astro,"index,follow",是,已实现并上线
+/guides/,客户端教程库,内容索引,BaseLayout.astro,"index,follow",是,已实现并上线
+/search/,Pagefind站内全文搜索,搜索页,BaseLayout.astro,"index,follow",是,已实现并上线
+/about/,关于我们与评测标准,信任页,BaseLayout.astro,"index,follow",是,已实现并上线
+/privacy/,隐私政策,法律页,BaseLayout.astro,"index,follow",是,已实现并上线
+/disclaimer/,使用声明与推广披露,法律页,BaseLayout.astro,"index,follow",是,已实现并上线
+/404.html,404错误页面,系统页,BaseLayout.astro,"noindex,nofollow",否,已实现并上线
+/airport/,机场推荐一级频道首页,一级导航,CategoryLayout.astro,"index,follow",是,已实现并上线
+/airport/recommend/,机场推荐-机场推荐专题页,二级专题,TopicLayout.astro,"index,follow",是,已实现并上线
+/airport/ranking/,机场推荐-机场排行专题页,二级专题,TopicLayout.astro,"index,follow",是,已实现并上线
+/airport/value/,机场推荐-性价比机场专题页,二级专题,TopicLayout.astro,"index,follow",是,已实现并上线
+/airport/stable/,机场推荐-稳定机场专题页,二级专题,TopicLayout.astro,"index,follow",是,已实现并上线
+/airport/cheap/,机场推荐-便宜机场专题页,二级专题,TopicLayout.astro,"index,follow",是,已实现并上线
+/airport/free-ladder/,机场推荐-免费梯子专题页,二级专题,TopicLayout.astro,"index,follow",是,已实现并上线
+/airport/bypass/,机场推荐-科学上网专题页,二级专题,TopicLayout.astro,"index,follow",是,已实现并上线
+/vpn/,VPN 与加速器一级频道首页,一级导航,CategoryLayout.astro,"index,follow",是,已实现并上线
+/vpn/recommend/,VPN 与加速器-VPN 推荐专题页,二级专题,TopicLayout.astro,"index,follow",是,已实现并上线
+/vpn/free/,VPN 与加速器-免费 VPN专题页,二级专题,TopicLayout.astro,"index,follow",是,已实现并上线
+/vpn/mobile/,VPN 与加速器-手机 VPN专题页,二级专题,TopicLayout.astro,"index,follow",是,已实现并上线
+/vpn/reviews/,VPN 与加速器-VPN 软件评测专题页,二级专题,TopicLayout.astro,"index,follow",是,已实现并上线
+/vpn/accelerator/,VPN 与加速器-VPN 加速器专题页,二级专题,TopicLayout.astro,"index,follow",是,已实现并上线
+/vpn/comparison/,VPN 与加速器-加速器对比专题页,二级专题,TopicLayout.astro,"index,follow",是,已实现并上线
+/vpn/best/,VPN 与加速器-好用的 VPN专题页,二级专题,TopicLayout.astro,"index,follow",是,已实现并上线
+/clash/,Clash 客户端一级频道首页,一级导航,CategoryLayout.astro,"index,follow",是,已实现并上线
+/clash/recommend/,Clash 客户端-Clash 推荐专题页,二级专题,TopicLayout.astro,"index,follow",是,已实现并上线
+/clash/verge/,Clash 客户端-Clash Verge专题页,二级专题,TopicLayout.astro,"index,follow",是,已实现并上线
+/clash/download/,Clash 客户端-Clash Verge 下载专题页,二级专题,TopicLayout.astro,"index,follow",是,已实现并上线
+/clash/subscription/,Clash 客户端-Clash Verge 订阅专题页,二级专题,TopicLayout.astro,"index,follow",是,已实现并上线
+/clash/meta/,Clash 客户端-Clash Meta专题页,二级专题,TopicLayout.astro,"index,follow",是,已实现并上线
+/clash/tutorial/,Clash 客户端-Clash 使用教程专题页,二级专题,TopicLayout.astro,"index,follow",是,已实现并上线
+/clash/troubleshooting/,Clash 客户端-Clash 故障排查专题页,二级专题,TopicLayout.astro,"index,follow",是,已实现并上线
+/resources/,资源与情报一级频道首页,一级导航,CategoryLayout.astro,"index,follow",是,已实现并上线
+/resources/free-nodes/,资源与情报-免费节点专题页,二级专题,TopicLayout.astro,"index,follow",是,已实现并上线
+/resources/runaway-warning/,资源与情报-跑路预警专题页,二级专题,TopicLayout.astro,"index,follow",是,已实现并上线
+/resources/faq/,资源与情报-机场 FAQ专题页,二级专题,TopicLayout.astro,"index,follow",是,已实现并上线
+/resources/risk-intelligence/,资源与情报-机场风险情报专题页,二级专题,TopicLayout.astro,"index,follow",是,已实现并上线
+/resources/node-test/,资源与情报-节点检测专题页,二级专题,TopicLayout.astro,"index,follow",是,已实现并上线
+/resources/subscription-issues/,资源与情报-订阅问题专题页,二级专题,TopicLayout.astro,"index,follow",是,已实现并上线
+/resources/beginner-help/,资源与情报-新手帮助专题页,二级专题,TopicLayout.astro,"index,follow",是,已实现并上线
+/brands/guangsuyun/,光速云品牌深度评测与套餐档案,品牌详情页,BrandLayout.astro,"index,follow",是,已实现并上线
+/brands/muguang/,暮光加速品牌深度评测与套餐档案,品牌详情页,BrandLayout.astro,"index,follow",是,已实现并上线
+/brands/feimao/,飞猫云品牌深度评测与套餐档案,品牌详情页,BrandLayout.astro,"index,follow",是,已实现并上线
+/brands/weifeng/,微风网络品牌深度评测与套餐档案,品牌详情页,BrandLayout.astro,"index,follow",是,已实现并上线
+/brands/dalaoyun/,大佬云品牌深度评测与套餐档案,品牌详情页,BrandLayout.astro,"index,follow",是,已实现并上线
+/brands/xingdaomeng/,星岛梦品牌深度评测与套餐档案,品牌详情页,BrandLayout.astro,"index,follow",是,已实现并上线
+/brands/ermao/,二猫云品牌深度评测与套餐档案,品牌详情页,BrandLayout.astro,"index,follow",是,已实现并上线
+/brands/wuyou/,无忧链接品牌深度评测与套餐档案,品牌详情页,BrandLayout.astro,"index,follow",是,已实现并上线
+/brands/weitu/,唯兔云品牌深度评测与套餐档案,品牌详情页,BrandLayout.astro,"index,follow",是,已实现并上线
+/brands/firefly/,Firefly（萤火虫）品牌深度评测与套餐档案,品牌详情页,BrandLayout.astro,"index,follow",是,已实现并上线
+/brands/yuzhou/,宇宙云品牌深度评测与套餐档案,品牌详情页,BrandLayout.astro,"index,follow",是,已实现并上线
+/brands/u1s1/,U1S1品牌深度评测与套餐档案,品牌详情页,BrandLayout.astro,"index,follow",是,已实现并上线
+/brands/lingmao/,灵猫网络品牌深度评测与套餐档案,品牌详情页,BrandLayout.astro,"index,follow",是,已实现并上线
+/brands/jilian/,极连云品牌深度评测与套餐档案,品牌详情页,BrandLayout.astro,"index,follow",是,已实现并上线
+/brands/guangnian/,光年梯品牌深度评测与套餐档案,品牌详情页,BrandLayout.astro,"index,follow",是,已实现并上线
+/brands/yifan/,一翻云品牌深度评测与套餐档案,品牌详情页,BrandLayout.astro,"index,follow",是,已实现并上线
+/brands/sogo/,SOGO 云品牌深度评测与套餐档案,品牌详情页,BrandLayout.astro,"index,follow",是,已实现并上线
+/brands/kexin/,可信云品牌深度评测与套餐档案,品牌详情页,BrandLayout.astro,"index,follow",是,已实现并上线
+/brands/sujie/,速界品牌深度评测与套餐档案,品牌详情页,BrandLayout.astro,"index,follow",是,已实现并上线
+/brands/shanyue/,闪跃品牌深度评测与套餐档案,品牌详情页,BrandLayout.astro,"index,follow",是,已实现并上线
+/brands/quanqiu/,全球云品牌深度评测与套餐档案,品牌详情页,BrandLayout.astro,"index,follow",是,已实现并上线
+/brands/shandianshu/,闪电鼠品牌深度评测与套餐档案,品牌详情页,BrandLayout.astro,"index,follow",是,已实现并上线
+/brands/yunjiexian/,云界线品牌深度评测与套餐档案,品牌详情页,BrandLayout.astro,"index,follow",是,已实现并上线
+/brands/liulianyun/,榴莲云品牌深度评测与套餐档案,品牌详情页,BrandLayout.astro,"index,follow",是,已实现并上线
+/brands/shenxing/,神行加速品牌深度评测与套餐档案,品牌详情页,BrandLayout.astro,"index,follow",是,已实现并上线
+/brands/huanqiuti/,环球梯品牌深度评测与套餐档案,品牌详情页,BrandLayout.astro,"index,follow",是,已实现并上线
+/brands/yinxingren/,隐形人品牌深度评测与套餐档案,品牌详情页,BrandLayout.astro,"index,follow",是,已实现并上线
+/brands/tiziyun/,梯子云品牌深度评测与套餐档案,品牌详情页,BrandLayout.astro,"index,follow",是,已实现并上线
+/brands/lingdong/,灵动云品牌深度评测与套餐档案,品牌详情页,BrandLayout.astro,"index,follow",是,已实现并上线
+/brands/langwang/,浪网品牌深度评测与套餐档案,品牌详情页,BrandLayout.astro,"index,follow",是,已实现并上线
+/brands/edgenova/,边缘节点 EdgeNova品牌深度评测与套餐档案,品牌详情页,BrandLayout.astro,"index,follow",是,已实现并上线

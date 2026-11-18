@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { siteConfig } from '../../data/site';
+
+const breadcrumbs = [
+  { name: '首页', href: '/' },
+  { name: '隐私政策', href: '/privacy/' },
+];
+---
+
+<BaseLayout
+  title="隐私政策 | 订阅指南 (clashverge.sbs)"
+  description="订阅指南（clashverge.sbs）关于访问者隐私保护、静态搜索无追踪及外部链接跳转的隐私政策说明。"
+  canonical="/privacy/"
+  breadcrumbs={breadcrumbs}
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
+    <Breadcrumb items={breadcrumbs} />
+    <article class="prose-editorial bg-white p-6 sm:p-10 rounded-3xl border border-[#E5EAF1]">
+      <h1 class="text-3xl font-extrabold text-[#172033] mb-4">隐私政策（Privacy Policy）</h1>
+      <p>生效与最近更新日期：{siteConfig.updatedDate}</p>
+      <h2>1. 纯静态架构与零账号收集</h2>
+      <p>
+        本站（{siteConfig.name}，域名 <code>{siteConfig.domain}</code>）基于 Astro 纯静态 HTML 架构构建。本站不设用户注册系统、不收集您的姓名、手机号、支付信息或任何代理订阅链接。
+      </p>
+      <h2>2. 站内搜索隐私</h2>
+      <p>
+        本站全文检索采用本地静态索引技术（Pagefind），您的搜索关键词在浏览器本地完成匹配，不会上传至任何第三方商业画像后台。
+      </p>
+      <h2>3. 外部推广链接说明</h2>
+      <p>
+        当您点击本站品牌数据库或文章中的第三方品牌官网链接（带有 <code>rel="nofollow sponsored noopener"</code> 属性）离开本站后，目标网站适用其各自的隐私政策。建议在注册第三方服务时避免使用您的常用主邮箱密码。
+      </p>
+    </article>
+  </div>
+</BaseLayout>

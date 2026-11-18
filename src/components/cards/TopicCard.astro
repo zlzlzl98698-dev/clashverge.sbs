@@ -1,0 +1,29 @@
+---
+import type { SecondaryTopic } from '../../data/navigation';
+
+export interface Props {
+  topic: SecondaryTopic;
+}
+const { topic } = Astro.props;
+---
+
+<article class="editorial-card p-5 flex flex-col justify-between group">
+  <div class="space-y-2.5">
+    <div class="flex items-center justify-between text-xs">
+      <span class="px-2 py-0.5 rounded bg-[#EFF6FF] text-[#2563EB] font-semibold">
+        {topic.primaryKeyword}
+      </span>
+      <span class="text-[#64748B]">{topic.clusters.length} 个三级集群</span>
+    </div>
+    <h3 class="text-base font-extrabold text-[#172033] group-hover:text-[#2563EB] transition-colors">
+      <a href={topic.href}>{topic.name}：{topic.title.split('：')[1] || topic.title}</a>
+    </h3>
+    <p class="text-xs text-[#64748B] line-clamp-2 leading-relaxed">
+      {topic.description}
+    </p>
+  </div>
+  <div class="pt-3 mt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+    <span class="text-[#64748B]">意图：{topic.searchIntent}</span>
+    <a href={topic.href} class="font-semibold text-[#2563EB]">进入专题 →</a>
+  </div>
+</article>

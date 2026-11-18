@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { siteConfig } from '../../data/site';
+
+const breadcrumbs = [
+  { name: '首页', href: '/' },
+  { name: '关于我们与评测标准', href: '/about/' },
+];
+---
+
+<BaseLayout
+  title="关于订阅指南 (clashverge.sbs)：实验室评测标准、数据核验与编辑独立声明"
+  description="了解订阅指南（clashverge.sbs）的内容核验方法论、Dark Network Observatory 测速标准以及商业推广与客观评测分离原则。"
+  canonical="/about/"
+  breadcrumbs={breadcrumbs}
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
+    <Breadcrumb items={breadcrumbs} />
+    <article class="prose-editorial bg-white p-6 sm:p-10 rounded-3xl border border-[#E5EAF1]">
+      <h1 class="text-3xl font-extrabold text-[#172033] mb-4">关于订阅指南（clashverge.sbs）与实验室评测标准</h1>
+      <p>
+        <strong>订阅指南（{siteConfig.domain}）</strong> 是一家专注于跨境网络链路评测、31 家机场品牌结构化数据库以及 Clash Verge Rev / Mihomo 等开源代理客户端教程的中文专业知识媒体。
+      </p>
+      <h2>一、我们的四条数据真实性底线</h2>
+      <ul>
+        <li><strong>绝不伪造未实测数据：</strong>对于拥有 <code>2026-10-19</code> 或 <code>2026-07-20</code> 实测记录的品牌，我们完整披露延迟、下行速率与测试环境；对于缺乏实测数据的品牌（如宇宙云、浪网、边缘节点 EdgeNova 或隐形人的测速项），我们一律标记为「待核实 / 未实测」。</li>
+        <li><strong>严格区分年付折算价与单月直付价：</strong>任何由年付小包除以 12 个月得出的低价（如约 5.6 元/月、8 元/月），均在价格旁强制标注「年付折算价，非普通月付价」。</li>
+        <li><strong>强制标注商家自述（Vendor Data）：</strong>对于品牌方单方面宣传的「晚高峰零卡顿」「1小时修复承诺」「完美解锁」等表述，统一前置「品牌资料显示」并标记为 <code>Vendor Data</code>。</li>
+        <li><strong>公开同系与重复品牌审计：</strong>我们在数据库与风险情报中心明确披露 Firefly 重复记录合并结果、qwerty 联盟系 5.6 元五品牌同规格矩阵以及 Firefly 与微风网络的同系关系。</li>
+      </ul>
+      <h2>二、商业合作与编辑独立性</h2>
+      <p>{siteConfig.affiliateDisclosure}</p>
+      <p>{siteConfig.editorialPolicy}</p>
+      <h2>三、联系我们与勘误反馈</h2>
+      <p>
+        如您发现任何品牌套餐价格变动、优惠码失效或客户端版本更新，欢迎发信至编辑部邮箱：
+        <a href={`mailto:${siteConfig.author.email}`} class="text-[#2563EB] font-semibold">{siteConfig.author.email}</a>。
+      </p>
+    </article>
+  </div>
+</BaseLayout>

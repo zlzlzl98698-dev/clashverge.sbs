@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { getAllPublishedContent } from '../../utils/content';
+
+export async function getStaticPaths() {
+  const all = await getAllPublishedContent();
+  const tags = Array.from(new Set(all.flatMap((a) => a.data.tags)));
+  return tags.map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      articles: all.filter((a) => a.data.tags.includes(tag)),
+    },
+  }));
+}
+
+const { tag, articles } = Astro.props;
+const breadcrumbs = [
+  { name: '首页', href: '/' },
+  { name: '原创文章总库', href: '/articles/' },
+  { name: `标签：#${tag}`, href: `/tags/${encodeURIComponent(tag)}/` },
+];
+---
+
+<BaseLayout
+  title={`#${tag} 相关评测与教程汇总 | 订阅指南`}
+  description={`浏览订阅指南（clashverge.sbs）中所有包含「${tag}」标签的原创评测文章、对比报告与客户端配置指南。`}
+  canonical={`/tags/${encodeURIComponent(tag)}/`}
+  breadcrumbs={breadcrumbs}
+  noindex={articles.length < 3}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+    <Breadcrumb items={breadcrumbs} />
+    <header class="p-6 sm:p-8 rounded-3xl bg-[#F7F9FC] border border-[#E5EAF1]">
+      <span class="text-xs font-bold text-[#2563EB] uppercase">TAG ARCHIVE</span>
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-[#172033] mt-1">
+        标签「#{tag}」下的原创内容（共 {articles.length} 篇）
+      </h1>
+    </header>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {articles.map((item) => (
+        <ArticleCard item={item} />
+      ))}
+    </div>
+  </div>
+</BaseLayout>

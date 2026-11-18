@@ -1,0 +1,68 @@
+---
+import type { BrandProfile } from '../../data/brands/schema';
+
+export interface Props {
+  brand: BrandProfile;
+}
+
+const { brand } = Astro.props;
+---
+
+<section class="observatory-panel p-5 sm:p-6 my-8 shadow-lg" aria-label={`${brand.name} 基础设施快照`}>
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 mb-5 border-b border-[#1E2D4A]">
+    <div class="flex items-center gap-2.5">
+      <span
+        class="w-3 h-3 rounded-sm"
+        style={`background-color: ${brand.accentColor}`}
+      ></span>
+      <h3 class="text-base sm:text-lg font-bold text-white">
+        {brand.name} · Brand Infrastructure Snapshot
+      </h3>
+    </div>
+    <span class="text-xs font-mono-metric text-slate-400">
+      DATA SOURCE: {brand.sourceDoc} | VERIFIED: {brand.verifiedDate}
+    </span>
+  </div>
+
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+    <div class="observatory-subpanel p-3.5">
+      <span class="text-[11px] font-mono-metric text-slate-400 block">FOUNDED YEAR</span>
+      <strong class="text-base font-mono-metric text-white mt-1 block">{brand.foundedYear}</strong>
+    </div>
+    <div class="observatory-subpanel p-3.5">
+      <span class="text-[11px] font-mono-metric text-slate-400 block">LINE ARCHITECTURE</span>
+      <strong class="text-sm font-bold text-emerald-400 mt-1 block">{brand.lineCategory}</strong>
+    </div>
+    <div class="observatory-subpanel p-3.5">
+      <span class="text-[11px] font-mono-metric text-slate-400 block">PROTOCOLS</span>
+      <strong class="text-sm font-mono-metric text-sky-300 mt-1 block">{brand.protocols.join(' / ')}</strong>
+    </div>
+    <div class="observatory-subpanel p-3.5">
+      <span class="text-[11px] font-mono-metric text-slate-400 block">CLIENT ECOSYSTEM</span>
+      <strong class="text-sm font-bold text-white mt-1 block">{brand.clientSupport}</strong>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+    <div class="observatory-subpanel p-4 space-y-2">
+      <h4 class="font-mono-metric text-sky-400 font-bold">REGIONAL POP COVERAGE // 节点地区分布</h4>
+      <div class="flex flex-wrap gap-1.5">
+        {brand.regions.map((r) => (
+          <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-200 font-mono-metric">
+            {r}
+          </span>
+        ))}
+      </div>
+    </div>
+    <div class="observatory-subpanel p-4 space-y-2">
+      <h4 class="font-mono-metric text-emerald-400 font-bold">SUPPORTED CLIENTS // 客户端兼容列表</h4>
+      <div class="flex flex-wrap gap-1.5">
+        {brand.supportedClients.map((c) => (
+          <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-200">
+            {c}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

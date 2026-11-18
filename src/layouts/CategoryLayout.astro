@@ -1,0 +1,169 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import BrandCard from '../components/BrandCard.astro';
+import TopicCard from '../components/cards/TopicCard.astro';
+import type { PrimaryNavSection } from '../data/navigation';
+import type { UnifiedContentItem } from '../utils/content';
+import { brands } from '../data/brands';
+import { proxyClients } from '../data/clients';
+
+export interface Props {
+  section: PrimaryNavSection;
+  articles: UnifiedContentItem[];
+}
+
+const { section, articles } = Astro.props;
+const breadcrumbs = [
+  { name: '首页', href: '/' },
+  { name: section.name, href: section.href },
+];
+
+const featuredArticle = articles.find((a) => a.data.pillar) || articles[0];
+const restArticles = articles.filter((a) => a.slug !== featuredArticle?.slug);
+const recommendedBrands = brands.slice(0, 6);
+---
+
+<BaseLayout
+  title={section.seoTitle}
+  description={section.description}
+  canonical={section.href}
+  breadcrumbs={breadcrumbs}
+  schemaType="CollectionPage"
+  itemListElements={section.topics.map((t, i) => ({ name: t.name, url: t.href, position: i + 1 }))}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-14">
+    <!-- Category Hero -->
+    <div class="p-6 sm:p-10 rounded-3xl bg-[#F7F9FC] border border-[#E5EAF1]">
+      <Breadcrumb items={breadcrumbs} />
+      <div class="flex flex-wrap items-center gap-2 mb-3">
+        <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#2563EB] text-white">
+          一级核心频道 · {section.badge}
+        </span>
+        <span class="text-xs text-[#64748B] font-mono">
+          下辖 {section.topics.length} 个独立二级专题 · {section.topics.length * 2} 个三级内容集群
+        </span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-[#172033] tracking-tight mb-4">
+        {section.title}
+      </h1>
+      <p class="text-base sm:text-lg text-[#64748B] max-w-4xl leading-relaxed">
+        {section.description}
+      </p>
+    </div>
+
+    <!-- 7 Secondary Topics Grid -->
+    <section>
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <h2 class="text-2xl font-extrabold text-[#172033]">
+            「{section.name}」下属 7 大二级专题矩阵
+          </h2>
+          <p class="text-sm text-[#64748B] mt-1">
+            每个二级专题均拥有独立路由、专属搜索意图解答与三级文章集群
+          </p>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {section.topics.map((topic) => (
+          <TopicCard topic={topic} />
+        ))}
+      </div>
+    </section>
+
+    <!-- Featured Pillar Article + Article Cards -->
+    {featuredArticle && (
+      <section class="space-y-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-2xl font-extrabold text-[#172033]">频道核心支柱指南与最新评测</h2>
+            <p class="text-sm text-[#64748B] mt-1">优先阅读涵盖本频道完整知识图谱的深度原创长文</p>
+          </div>
+          <a href="/articles/" class="text-sm font-semibold text-[#2563EB] hover:underline">
+            全部文章 →
+          </a>
+        </div>
+        <ArticleCard item={featuredArticle} variant="featured" />
+        {restArticles.length > 0 && (
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+            {restArticles.slice(0, 6).map((art) => (
+              <ArticleCard item={art} />
+            ))}
+          </div>
+        )}
+      </section>
+    )}
+
+    <!-- Clash Clients Matrix Section (Shown on Clash Primary Channel) -->
+    {section.id === 'clash' && (
+      <section class="space-y-5 pt-6 border-t border-[#E5EAF1]">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <h2 class="text-2xl font-extrabold text-[#172033]">
+              热门代理客户端兼容速查与选型建议
+            </h2>
+            <p class="text-sm text-[#64748B] mt-1">
+              根据您的操作系统选择仍在积极维护的开源或官方客户端，点击直达配置教程
+            </p>
+          </div>
+          <a href="/guides/" class="text-sm font-semibold text-[#2563EB] hover:underline">
+            查看全部 22 款客户端速查 →
+          </a>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {proxyClients.slice(0, 9).map((client) => {
+            const clientHref = `/articles/${client.tutorialSlug}/`;
+            return (
+              <a
+                href={clientHref}
+                class="editorial-card p-4.5 space-y-2.5 block hover:border-[#2563EB] hover:shadow-md transition-all group cursor-pointer bg-white"
+              >
+                <div class="flex items-center justify-between">
+                  <h3 class="font-bold text-[#172033] group-hover:text-[#2563EB] transition-colors flex items-center gap-1.5">
+                    <span>{client.name}</span>
+                    <span class="text-xs text-[#2563EB] opacity-0 group-hover:opacity-100 transition-opacity">↗</span>
+                  </h3>
+                  <span class="text-[11px] px-2 py-0.5 rounded bg-[#EFF6FF] text-[#2563EB] font-semibold shrink-0">
+                    {client.pricingModel}
+                  </span>
+                </div>
+                <p class="text-xs text-[#64748B]">{client.os.join(' / ')} · {client.kernel}</p>
+                <p class="text-xs text-[#172033] line-clamp-2 leading-relaxed">{client.summary}</p>
+                {client.maintenanceNote && (
+                  <p class="text-[11px] text-amber-800 bg-amber-50 p-2 rounded border border-amber-200">
+                    {client.maintenanceNote}
+                  </p>
+                )}
+                <div class="pt-2 border-t border-[#E5EAF1] flex items-center justify-between text-xs font-semibold text-[#2563EB]">
+                  <span>查看选型与配置教程</span>
+                  <span class="group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </section>
+    )}
+
+    <!-- Associated Brands Section -->
+    <section class="pt-6 border-t border-[#E5EAF1]">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
+        <div>
+          <h2 class="text-2xl font-extrabold text-[#172033]">关联核实品牌数据库推荐</h2>
+          <p class="text-sm text-[#64748B] mt-1">
+            所有品牌数据均来自核实清单，明确区分实测速率（Measured）与商家说明（Vendor Data）
+          </p>
+        </div>
+        <a href="/brands/" class="text-sm font-semibold text-[#2563EB] hover:underline">
+          进入 31 家品牌数据库筛选 →
+        </a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {recommendedBrands.map((b) => (
+          <BrandCard brand={b} />
+        ))}
+      </div>
+    </section>
+  </div>
+</BaseLayout>

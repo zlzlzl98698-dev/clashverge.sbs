@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import BrandCard from '../../components/BrandCard.astro';
+import { getAllPublishedContent } from '../../utils/content';
+import { brands } from '../../data/brands';
+
+const allContent = await getAllPublishedContent();
+const reviews = allContent.filter((a) => a.collection === 'reviews' || a.data.category === 'airport');
+const breadcrumbs = [
+  { name: '首页', href: '/' },
+  { name: '深度评测中心', href: '/reviews/' },
+];
+---
+
+<BaseLayout
+  title="深度品牌评测中心：2026 光速云及 31 家机场实测档案汇总 | 订阅指南"
+  description="汇总订阅指南网络实验室发布的深度机场品牌评测报告与 31 家独立品牌评测档案入口。"
+  canonical="/reviews/"
+  breadcrumbs={breadcrumbs}
+  schemaType="CollectionPage"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
+    <Breadcrumb items={breadcrumbs} />
+    <header class="p-6 sm:p-9 rounded-3xl bg-[#F7F9FC] border border-[#E5EAF1] space-y-3">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-[#172033]">
+        深度品牌评测中心（专题评测长文 + 31 家品牌独立档案）
+      </h1>
+      <p class="text-base text-[#64748B] max-w-3xl">
+        每份评测均包含套餐计费周期拆解、Dark Network Observatory 测速图表、AI 与流媒体解锁矩阵及客观限制说明。
+      </p>
+    </header>
+
+    <section class="space-y-5">
+      <h2 class="text-2xl font-extrabold text-[#172033]">重点专题评测报告</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {reviews.map((item) => (
+          <ArticleCard item={item} />
+        ))}
+      </div>
+    </section>
+
+    <section class="space-y-5 pt-6 border-t border-[#E5EAF1]">
+      <div class="flex items-center justify-between">
+        <h2 class="text-2xl font-extrabold text-[#172033]">31 家独立品牌单页评测档案</h2>
+        <a href="/brands/" class="text-sm font-semibold text-[#2563EB] hover:underline">使用多条件筛选器 →</a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {brands.slice(0, 12).map((b) => (
+          <BrandCard brand={b} />
+        ))}
+      </div>
+    </section>
+  </div>
+</BaseLayout>

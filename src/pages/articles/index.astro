@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { getAllPublishedContent } from '../../utils/content';
+
+const allContent = await getAllPublishedContent();
+const allTags = Array.from(new Set(allContent.flatMap((a) => a.data.tags)));
+
+const breadcrumbs = [
+  { name: '首页', href: '/' },
+  { name: '原创文章总库', href: '/articles/' },
+];
+---
+
+<BaseLayout
+  title="原创文章总库：2026 机场评测、VPN 架构对比、Clash 教程与排障指南 | 订阅指南"
+  description="收录订阅指南（clashverge.sbs）已正式发布的全部深度原创文章，涵盖机场推荐、光速云评测、5.6元便宜机场审计、Clash Verge Rev 保姆级教程与故障排查。"
+  canonical="/articles/"
+  breadcrumbs={breadcrumbs}
+  schemaType="CollectionPage"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
+    <Breadcrumb items={breadcrumbs} />
+
+    <header class="p-6 sm:p-9 rounded-3xl bg-[#F7F9FC] border border-[#E5EAF1] space-y-4">
+      <div class="flex flex-wrap items-center gap-2 text-xs">
+        <span class="px-3 py-1 rounded-full bg-[#2563EB] text-white font-bold">
+          已正式发布：{allContent.length} 篇深度长文
+        </span>
+        <span class="px-3 py-1 rounded-full bg-white border border-[#E5EAF1] text-[#64748B]">
+          规划储备：56 个三级集群 / 560 篇 SEO 标题库
+        </span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-[#172033]">
+        订阅指南 · 原创文章与评测报告总库
+      </h1>
+      <p class="text-base text-[#64748B] max-w-4xl">
+        本站坚持「写完核实一篇、正式发布一篇」，绝不用替换年份或品牌名的空洞模板文章充数。以下为已通过事实核验与构建检查的全部正式文章。
+      </p>
+
+      <!-- Tag Cloud -->
+      <div class="pt-2 flex flex-wrap items-center gap-1.5">
+        <span class="text-xs font-bold text-[#172033] mr-1">按标签浏览：</span>
+        {allTags.map((tag) => (
+          <a
+            href={`/tags/${encodeURIComponent(tag)}/`}
+            class="px-2.5 py-1 rounded-lg bg-white hover:bg-[#EFF6FF] border border-[#E5EAF1] text-xs text-[#64748B] hover:text-[#2563EB] transition-colors"
+          >
+            #{tag}
+          </a>
+        ))}
+      </div>
+    </header>
+
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {allContent.map((item) => (
+        <ArticleCard item={item} />
+      ))}
+    </section>
+  </div>
+</BaseLayout>

@@ -1,0 +1,74 @@
+---
+import { render } from 'astro:content';
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ReviewLayout from '../../layouts/ReviewLayout.astro';
+import ComparisonLayout from '../../layouts/ComparisonLayout.astro';
+import GuideLayout from '../../layouts/GuideLayout.astro';
+import { getAllPublishedContent } from '../../utils/content';
+
+export async function getStaticPaths() {
+  const all = await getAllPublishedContent();
+  return all.map((item, idx) => ({
+    params: { slug: item.slug },
+    props: {
+      item,
+      prevArticle: all[idx - 1],
+      nextArticle: all[idx + 1],
+      all,
+    },
+  }));
+}
+
+const { item, prevArticle, nextArticle, all } = Astro.props;
+const { Content, headings } = await render(item.rawEntry);
+
+const relatedArticles = all
+  .filter(
+    (other) =>
+      other.slug !== item.slug &&
+      (item.data.relatedSlugs.includes(other.slug) || other.data.category === item.data.category)
+  )
+  .slice(0, 3);
+---
+
+{item.collection === 'reviews' ? (
+  <ReviewLayout
+    item={item}
+    headings={headings}
+    relatedArticles={relatedArticles}
+    prevArticle={prevArticle}
+    nextArticle={nextArticle}
+  >
+    <Content />
+  </ReviewLayout>
+) : item.collection === 'comparisons' ? (
+  <ComparisonLayout
+    item={item}
+    headings={headings}
+    relatedArticles={relatedArticles}
+    prevArticle={prevArticle}
+    nextArticle={nextArticle}
+  >
+    <Content />
+  </ComparisonLayout>
+) : item.collection === 'guides' ? (
+  <GuideLayout
+    item={item}
+    headings={headings}
+    relatedArticles={relatedArticles}
+    prevArticle={prevArticle}
+    nextArticle={nextArticle}
+  >
+    <Content />
+  </GuideLayout>
+) : (
+  <ArticleLayout
+    item={item}
+    headings={headings}
+    relatedArticles={relatedArticles}
+    prevArticle={prevArticle}
+    nextArticle={nextArticle}
+  >
+    <Content />
+  </ArticleLayout>
+)}

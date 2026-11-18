@@ -1,0 +1,11 @@
+---
+import CategoryLayout from '../../layouts/CategoryLayout.astro';
+import { getPrimarySectionById } from '../../data/navigation';
+import { getAllPublishedContent } from '../../utils/content';
+
+const section = getPrimarySectionById('resources')!;
+const allContent = await getAllPublishedContent();
+const articles = allContent.filter((a) => a.data.category === 'resources' || a.slug.includes('troubleshooting') || a.slug.includes('audit'));
+---
+
+<CategoryLayout section={section} articles={articles} />

@@ -1,0 +1,85 @@
+---
+import type { BrandProfile } from '../../data/brands/schema';
+
+export interface Props {
+  brand?: BrandProfile;
+  isConceptual?: boolean;
+}
+
+const { brand, isConceptual = false } = Astro.props;
+const title = brand ? `${brand.name} 跨境传输网络路径图（架构示意）` : 'IEPL / IPLC 专线与 BGP 中转标准网络拓扑示意';
+const lineLabel = brand ? brand.lineType : 'IEPL / IPLC 内网物理专线（不过公网 GFW 队列）';
+const protoLabel = brand ? brand.protocols.join(' / ') : 'VLESS / Trojan / Hysteria 2';
+const regionsLabel = brand ? brand.regions.slice(0, 5).join(' · ') : '香港 · 新加坡 · 日本 · 台湾 · 美国';
+---
+
+<section class="observatory-panel p-5 sm:p-6 my-8 shadow-lg" aria-label={title}>
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 mb-5 border-b border-[#1E2D4A]">
+    <div>
+      <div class="flex items-center gap-2">
+        <h3 class="text-base sm:text-lg font-bold text-white">{title}</h3>
+        <span class="text-[11px] font-mono-metric px-2 py-0.5 rounded bg-amber-500/15 border border-amber-400/30 text-amber-300">
+          {isConceptual || !brand ? 'CONCEPTUAL TOPOLOGY // 概念示意' : 'ARCHITECTURE SCHEMATIC // 架构示意'}
+        </span>
+      </div>
+      <p class="text-xs text-slate-400 mt-0.5">
+        注：本拓扑图用于解释跨境数据包从本地客户端到海外落地节点的逻辑传输路径，具体物理机房跳数以服务商实时路由为准。
+      </p>
+    </div>
+  </div>
+
+  <!-- 4-Stage Path Observatory -->
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-3 items-stretch">
+    <!-- Stage 1 -->
+    <div class="observatory-subpanel p-4 flex flex-col justify-between">
+      <div>
+        <span class="text-[11px] font-mono-metric text-sky-400">STAGE 01 // CLIENT</span>
+        <h4 class="text-sm font-bold text-white mt-1">用户终端与代理内核</h4>
+        <p class="text-xs text-slate-400 mt-1">
+          {brand ? brand.supportedClients.slice(0, 3).join(' / ') : 'Clash Verge Rev / Shadowrocket / 专属客户端'}
+        </p>
+      </div>
+      <div class="mt-3 pt-2 border-t border-slate-800 text-[11px] font-mono-metric text-emerald-400">
+        加密封装: {protoLabel}
+      </div>
+    </div>
+
+    <!-- Stage 2 -->
+    <div class="observatory-subpanel p-4 flex flex-col justify-between">
+      <div>
+        <span class="text-[11px] font-mono-metric text-sky-400">STAGE 02 // INGRESS</span>
+        <h4 class="text-sm font-bold text-white mt-1">国内 BGP 中转入口</h4>
+        <p class="text-xs text-slate-400 mt-1">
+          隐藏海外真实落地 IP，三网（电信/联通/移动）就近低延迟接入国内入口节点
+        </p>
+      </div>
+      <div class="mt-3 pt-2 border-t border-slate-800 text-[11px] font-mono-metric text-sky-300">
+        特性: 防国内 ISP 劣化丢包
+      </div>
+    </div>
+
+    <!-- Stage 3 -->
+    <div class="observatory-subpanel p-4 border-2 border-sky-500/50 flex flex-col justify-between">
+      <div>
+        <span class="text-[11px] font-mono-metric text-emerald-400">STAGE 03 // CROSS-BORDER</span>
+        <h4 class="text-sm font-bold text-white mt-1">跨境传输层（核心瓶颈段）</h4>
+        <p class="text-xs text-slate-300 mt-1">{lineLabel}</p>
+      </div>
+      <div class="mt-3 pt-2 border-t border-slate-800 text-[11px] font-mono-metric text-emerald-400">
+        优势: 规避晚高峰公网 QoS 拥塞
+      </div>
+    </div>
+
+    <!-- Stage 4 -->
+    <div class="observatory-subpanel p-4 flex flex-col justify-between">
+      <div>
+        <span class="text-[11px] font-mono-metric text-sky-400">STAGE 04 // EGRESS</span>
+        <h4 class="text-sm font-bold text-white mt-1">海外落地与原生 IP 解锁</h4>
+        <p class="text-xs text-slate-400 mt-1">落地覆盖：{regionsLabel}</p>
+      </div>
+      <div class="mt-3 pt-2 border-t border-slate-800 text-[11px] font-mono-metric text-amber-300">
+        目标: ChatGPT / Netflix / 常规外网
+      </div>
+    </div>
+  </div>
+</section>

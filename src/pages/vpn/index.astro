@@ -1,0 +1,11 @@
+---
+import CategoryLayout from '../../layouts/CategoryLayout.astro';
+import { getPrimarySectionById } from '../../data/navigation';
+import { getAllPublishedContent } from '../../utils/content';
+
+const section = getPrimarySectionById('vpn')!;
+const allContent = await getAllPublishedContent();
+const articles = allContent.filter((a) => a.data.category === 'vpn' || a.data.category === 'airport');
+---
+
+<CategoryLayout section={section} articles={articles} />

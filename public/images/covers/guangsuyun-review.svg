@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
+  <rect width="800" height="450" fill="#0F172A"/>
+  <rect x="50" y="50" width="700" height="350" rx="18" fill="#111C33" stroke="#1E2D4A" stroke-width="2"/>
+  <rect x="90" y="110" width="280" height="230" rx="12" fill="#0B1221" stroke="#2563EB" stroke-width="2"/>
+  <text x="120" y="155" fill="#38BDF8" font-family="monospace" font-size="14">PRIMARY REVIEW // GSY</text>
+  <text x="120" y="195" fill="#FFFFFF" font-family="sans-serif" font-size="26" font-weight="bold">光速云深度评测</text>
+  <text x="120" y="235" fill="#94A3B8" font-family="sans-serif" font-size="15">IEPL 专线 + VLESS 协议</text>
+  <text x="120" y="275" fill="#10B981" font-family="monospace" font-size="18" font-weight="bold">HK 22ms | 529 Mbps</text>
+  <rect x="410" y="110" width="300" height="105" rx="10" fill="#0B1221" stroke="#1E2D4A"/>
+  <text x="435" y="150" fill="#94A3B8" font-family="monospace" font-size="13">ANNUAL LITE PLAN</text>
+  <text x="435" y="185" fill="#E2E8F0" font-family="monospace" font-size="20" font-weight="bold">¥99/yr (69GB/mo)</text>
+  <rect x="410" y="235" width="300" height="105" rx="10" fill="#0B1221" stroke="#1E2D4A"/>
+  <text x="435" y="275" fill="#94A3B8" font-family="monospace" font-size="13">PERMANENT 147 PLAN</text>
+  <text x="435" y="310" fill="#38BDF8" font-family="monospace" font-size="20" font-weight="bold">¥147 / 247GB 永久</text>
+</svg>

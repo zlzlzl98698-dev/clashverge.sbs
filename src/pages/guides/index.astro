@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { getAllPublishedContent } from '../../utils/content';
+import { proxyClients } from '../../data/clients';
+
+const allContent = await getAllPublishedContent();
+const guides = allContent.filter((a) => a.collection === 'guides' || a.data.category === 'clash');
+const breadcrumbs = [
+  { name: '首页', href: '/' },
+  { name: '客户端教程与排障库', href: '/guides/' },
+];
+---
+
+<BaseLayout
+  title="代理客户端教程与故障排查知识库：Clash Verge Rev / 小火箭 / 软路由 | 订阅指南"
+  description="收录 Windows、macOS、Android、iOS、Linux、OpenWrt 软路由 22 款主流代理客户端的下载指引、订阅配置教程与节点 Timeout 排障手册。"
+  canonical="/guides/"
+  breadcrumbs={breadcrumbs}
+  schemaType="CollectionPage"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
+    <Breadcrumb items={breadcrumbs} />
+    <header class="p-6 sm:p-9 rounded-3xl bg-[#F7F9FC] border border-[#E5EAF1] space-y-3">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-[#172033]">
+        全平台代理客户端配置教程与故障排查库
+      </h1>
+      <p class="text-base text-[#64748B] max-w-3xl">
+        涵盖 Clash Verge Rev、v2rayN、FlClash、Shadowrocket、Stash、v2rayNG、Hiddify、OpenClash、PassWall2、Nikki 等 22 款工具的实操文档。
+      </p>
+    </header>
+
+    <section class="space-y-5">
+      <h2 class="text-2xl font-extrabold text-[#172033]">核心实操教程与排障指南</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {guides.map((item) => (
+          <ArticleCard item={item} />
+        ))}
+      </div>
+    </section>
+
+    <section class="space-y-5 pt-6 border-t border-[#E5EAF1]">
+      <h2 class="text-2xl font-extrabold text-[#172033]">22 款核实第三方客户端速查表</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {proxyClients.map((c) => {
+          const clientHref = `/articles/${c.tutorialSlug}/`;
+          return (
+            <a
+              href={clientHref}
+              class="editorial-card p-5 space-y-2.5 block hover:border-[#2563EB] hover:shadow-md transition-all group cursor-pointer bg-white"
+            >
+              <div class="flex items-center justify-between">
+                <strong class="text-base text-[#172033] group-hover:text-[#2563EB] transition-colors flex items-center gap-1.5">
+                  <span>{c.name}</span>
+                  <span class="text-xs text-[#2563EB] opacity-0 group-hover:opacity-100 transition-opacity">↗</span>
+                </strong>
+                <span class="text-xs px-2 py-0.5 rounded bg-[#EFF6FF] text-[#2563EB] font-semibold shrink-0">
+                  {c.pricingModel}
+                </span>
+              </div>
+              <p class="text-xs text-[#64748B] font-mono">{c.os.join(' · ')} | {c.kernel}</p>
+              <p class="text-xs text-[#172033] leading-relaxed line-clamp-3">{c.summary}</p>
+              {c.maintenanceNote && (
+                <p class="text-[11px] text-amber-800 bg-amber-50 p-2 rounded border border-amber-200">
+                  {c.maintenanceNote}
+                </p>
+              )}
+              <div class="pt-2.5 border-t border-[#E5EAF1] flex items-center justify-between text-xs font-semibold text-[#2563EB]">
+                <span>阅读相关客户端配置教程</span>
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </section>
+  </div>
+</BaseLayout>

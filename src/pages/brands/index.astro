@@ -1,0 +1,356 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import BrandCard from '../../components/BrandCard.astro';
+import { brands } from '../../data/brands';
+import { siteConfig } from '../../data/site';
+
+const breadcrumbs = [
+  { name: '首页', href: '/' },
+  { name: '机场品牌数据库 (31家)', href: '/brands/' },
+];
+
+const itemListElements = brands.map((b, i) => ({
+  name: `${b.name} (${b.englishName})`,
+  url: `/brands/${b.slug}/`,
+  position: i + 1,
+}));
+
+const measuredCount = brands.filter((b) => b.dataStatus === 'measured').length;
+const vendorCount = brands.filter((b) => b.dataStatus === 'vendor').length;
+const historicalCount = brands.filter((b) => b.dataStatus === 'historical' || b.dataStatus === 'pending').length;
+---
+
+<BaseLayout
+  title="2026 机场品牌评测数据库：31家独立机场套餐价格、IEPL/IPLC线路与实测检索 | 订阅指南"
+  description="收录经去重核实的 31 家独立机场品牌（源自 32 条原始记录），支持按品牌名称、IEPL/IPLC 线路、Clash 订阅兼容性、价格区间、流量额度、AI 与流媒体解锁状态实时筛选与排序。"
+  canonical="/brands/"
+  breadcrumbs={breadcrumbs}
+  schemaType="ItemList"
+  itemListElements={itemListElements}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
+    <Breadcrumb items={breadcrumbs} />
+
+    <!-- Database Header & Audit Summary -->
+    <header class="p-6 sm:p-9 rounded-3xl bg-[#F7F9FC] border border-[#E5EAF1] space-y-5">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#2563EB] text-white">
+            BRAND DATABASE // 31 独立品牌
+          </span>
+          <span class="px-3 py-1 rounded-full text-xs font-mono bg-white border border-[#E5EAF1] text-[#172033]">
+            主批次核实：{siteConfig.verifiedBatchDate} · 历史档案：{siteConfig.historicalBatchDate}
+          </span>
+        </div>
+        <span class="text-xs text-[#64748B]">最近更新：{siteConfig.updatedDate}</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-[#172033] tracking-tight">
+        2026 中文机场品牌评测数据库（31 家全量核实档案）
+      </h1>
+
+      <p class="text-base text-[#64748B] max-w-4xl leading-relaxed">
+        本数据库基于原始《32家机场品牌清单.txt》与《光速云品牌信息.txt》建立。经实验室数据去重审计，原清单第 8 项「Firefly」与末尾第 32 项「Firefly 萤火虫」实为同一品牌的两批次记录，合并去重后共收录 <strong>31 家独立品牌</strong>。所有参数严格区分实测记录与商家自述，未核实字段一律标记为「待核实」。
+      </p>
+
+      <!-- Data Status Summary Pills -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-xs">
+        <div class="p-3.5 rounded-xl bg-white border border-emerald-200 flex items-center justify-between">
+          <div>
+            <strong class="text-emerald-700 block">第三方实测覆盖 (Measured)</strong>
+            <span class="text-[#64748B]">含五地延迟/带宽与解锁矩阵</span>
+          </div>
+          <span class="text-lg font-mono font-extrabold text-emerald-700">{measuredCount} 家</span>
+        </div>
+        <div class="p-3.5 rounded-xl bg-white border border-sky-200 flex items-center justify-between">
+          <div>
+            <strong class="text-sky-700 block">品牌资料核录 (Vendor Data)</strong>
+            <span class="text-[#64748B]">套餐/协议明确，测速待补充</span>
+          </div>
+          <span class="text-lg font-mono font-extrabold text-sky-700">{vendorCount} 家</span>
+        </div>
+        <div class="p-3.5 rounded-xl bg-white border border-amber-200 flex items-center justify-between">
+          <div>
+            <strong class="text-amber-700 block">历史档案 / 待核实 (Historical/Pending)</strong>
+            <span class="text-[#64748B]">2026-08记录或套餐待补</span>
+          </div>
+          <span class="text-lg font-mono font-extrabold text-amber-700">{historicalCount} 家</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Interactive Filter & Search Console -->
+    <section
+      aria-label="品牌数据库筛选控制台"
+      class="p-5 sm:p-6 rounded-2xl bg-white border border-[#E5EAF1] shadow-sm space-y-4"
+    >
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+        <!-- 1. Keyword Search -->
+        <div class="sm:col-span-2">
+          <label for="brand-search-input" class="block text-xs font-bold text-[#172033] mb-1.5">
+            🔍 搜索品牌名称 / 拼音 / 协议
+          </label>
+          <input
+            id="brand-search-input"
+            type="search"
+            placeholder="例如：光速云、Firefly、星岛梦、一翻云、闪电鼠..."
+            class="w-full px-3.5 py-2.5 rounded-xl border border-[#E5EAF1] focus:border-[#2563EB] text-sm text-[#172033]"
+          />
+        </div>
+
+        <!-- 2. Line Category Filter -->
+        <div>
+          <label for="filter-line" class="block text-xs font-bold text-[#172033] mb-1.5">
+            🌐 线路类型筛选
+          </label>
+          <select
+            id="filter-line"
+            class="w-full px-3 py-2.5 rounded-xl border border-[#E5EAF1] bg-[#F7F9FC] text-sm text-[#172033]"
+          >
+            <option value="all">全部线路类型 (31)</option>
+            <option value="IEPL专线">IEPL 物理专线</option>
+            <option value="IPLC专线">IPLC 专线</option>
+            <option value="BGP中转/混合">BGP 中转 / 优化线路</option>
+            <option value="待核实">线路待核实</option>
+          </select>
+        </div>
+
+        <!-- 3. Client Compatibility Filter -->
+        <div>
+          <label for="filter-client" class="block text-xs font-bold text-[#172033] mb-1.5">
+            💻 客户端与订阅支持
+          </label>
+          <select
+            id="filter-client"
+            class="w-full px-3 py-2.5 rounded-xl border border-[#E5EAF1] bg-[#F7F9FC] text-sm text-[#172033]"
+          >
+            <option value="all">全部客户端方式</option>
+            <option value="clash-ok">支持 Clash 通用订阅 (含双支持)</option>
+            <option value="自研+通用订阅">自研客户端 + 通用订阅双支持</option>
+            <option value="通用订阅">纯第三方通用订阅</option>
+            <option value="仅专属客户端">仅限官方专属客户端 (无订阅链接)</option>
+          </select>
+        </div>
+
+        <!-- 4. Entry Price Filter -->
+        <div>
+          <label for="filter-price" class="block text-xs font-bold text-[#172033] mb-1.5">
+            💰 入门月均成本区间
+          </label>
+          <select
+            id="filter-price"
+            class="w-full px-3 py-2.5 rounded-xl border border-[#E5EAF1] bg-[#F7F9FC] text-sm text-[#172033]"
+          >
+            <option value="all">全部价格区间</option>
+            <option value="6">¥6/月及以下 (5.6元极限档)</option>
+            <option value="8.5">¥8.5/月及以下 (百元内年付小包)</option>
+            <option value="18">¥18/月及以下</option>
+            <option value="25">¥25/月及以下</option>
+          </select>
+        </div>
+
+        <!-- 5. Traffic Filter -->
+        <div>
+          <label for="filter-traffic" class="block text-xs font-bold text-[#172033] mb-1.5">
+            📊 基础套餐月流量
+          </label>
+          <select
+            id="filter-traffic"
+            class="w-full px-3 py-2.5 rounded-xl border border-[#E5EAF1] bg-[#F7F9FC] text-sm text-[#172033]"
+          >
+            <option value="all">不限基础流量</option>
+            <option value="60">≥ 60GB / 月</option>
+            <option value="100">≥ 100GB / 月</option>
+            <option value="130">≥ 130GB / 月</option>
+          </select>
+        </div>
+
+        <!-- 6. Data Verification Status Filter -->
+        <div>
+          <label for="filter-status" class="block text-xs font-bold text-[#172033] mb-1.5">
+            🛡️ 数据核验状态與 AI 解锁
+          </label>
+          <select
+            id="filter-status"
+            class="w-full px-3 py-2.5 rounded-xl border border-[#E5EAF1] bg-[#F7F9FC] text-sm text-[#172033]"
+          >
+            <option value="all">全部数据状态</option>
+            <option value="measured">仅看含实测数据 (Measured)</option>
+            <option value="ai-supported">实测或主打 ChatGPT 支持</option>
+            <option value="vendor">品牌资料核录 (Vendor Data)</option>
+            <option value="historical">2026-08 历史档案 / 待核实</option>
+          </select>
+        </div>
+
+        <!-- 7. Sort Order -->
+        <div>
+          <label for="sort-order" class="block text-xs font-bold text-[#172033] mb-1.5">
+            ↕️ 排序方式
+          </label>
+          <select
+            id="sort-order"
+            class="w-full px-3 py-2.5 rounded-xl border border-[#E5EAF1] bg-[#F7F9FC] text-sm text-[#172033]"
+          >
+            <option value="rank">默认综合推荐序</option>
+            <option value="price-asc">入门价格从低到高</option>
+            <option value="traffic-desc">基础流量从高到低</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Filter Status Bar & Reset -->
+      <div class="pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2 text-xs">
+        <p class="text-[#64748B]">
+          当前匹配显示：<strong id="brand-match-count" class="text-[#2563EB] font-bold">{brands.length}</strong> / {brands.length} 家独立机场品牌
+        </p>
+        <button
+          id="reset-brand-filters"
+          type="button"
+          class="px-3 py-1 rounded-lg bg-[#F7F9FC] hover:bg-slate-200 text-[#172033] font-semibold cursor-pointer"
+        >
+          重置全部筛选条件
+        </button>
+      </div>
+    </section>
+
+    <!-- Brand Cards Grid (Static HTML Rendered by Astro) -->
+    <section id="brand-cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {brands.map((brand) => (
+        <BrandCard brand={brand} />
+      ))}
+    </section>
+
+    <!-- Empty State -->
+    <div
+      id="brand-empty-state"
+      class="hidden p-12 rounded-3xl bg-[#F7F9FC] border border-[#E5EAF1] text-center space-y-3"
+    >
+      <p class="text-lg font-extrabold text-[#172033]">未找到符合当前组合筛选条件的机场品牌</p>
+      <p class="text-sm text-[#64748B]">
+        请尝试放宽「价格区间」或将「客户端支持」切换回全部方式。
+      </p>
+      <button
+        id="empty-reset-btn"
+        type="button"
+        class="px-4 py-2 rounded-xl bg-[#2563EB] text-white text-xs font-bold cursor-pointer"
+      >
+        显示全部 31 家品牌
+      </button>
+    </div>
+  </div>
+</BaseLayout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('brand-search-input');
+    const lineSelect = document.getElementById('filter-line');
+    const clientSelect = document.getElementById('filter-client');
+    const priceSelect = document.getElementById('filter-price');
+    const trafficSelect = document.getElementById('filter-traffic');
+    const statusSelect = document.getElementById('filter-status');
+    const sortSelect = document.getElementById('sort-order');
+    const resetBtn = document.getElementById('reset-brand-filters');
+    const emptyResetBtn = document.getElementById('empty-reset-btn');
+    const countEl = document.getElementById('brand-match-count');
+    const grid = document.getElementById('brand-cards-grid');
+    const emptyState = document.getElementById('brand-empty-state');
+
+    if (!grid) return;
+    const cards = Array.from(grid.querySelectorAll('[data-brand-card]'));
+
+    // Support URL query params initialization
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('line') && lineSelect) lineSelect.value = params.get('line');
+    if (params.get('client') && clientSelect) clientSelect.value = params.get('client');
+    if (params.get('status') && statusSelect) statusSelect.value = params.get('status');
+    if (params.get('q') && searchInput) searchInput.value = params.get('q');
+
+    function applyFilters() {
+      const q = (searchInput?.value || '').trim().toLowerCase();
+      const line = lineSelect?.value || 'all';
+      const client = clientSelect?.value || 'all';
+      const maxPrice = priceSelect?.value === 'all' ? Infinity : parseFloat(priceSelect?.value || '999');
+      const minTraffic = trafficSelect?.value === 'all' ? 0 : parseFloat(trafficSelect?.value || '0');
+      const status = statusSelect?.value || 'all';
+      const sort = sortSelect?.value || 'rank';
+
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const name = card.getAttribute('data-name') || '';
+        const slug = card.getAttribute('data-slug') || '';
+        const text = (card.textContent || '').toLowerCase();
+        const cardLine = card.getAttribute('data-line') || '';
+        const cardClient = card.getAttribute('data-client') || '';
+        const cardPrice = parseFloat(card.getAttribute('data-price') || '0');
+        const cardTraffic = parseFloat(card.getAttribute('data-traffic') || '0');
+        const cardStatus = card.getAttribute('data-status') || '';
+        const cardAi = card.getAttribute('data-ai') || '';
+
+        let match = true;
+        if (q && !name.includes(q) && !slug.includes(q) && !text.includes(q)) match = false;
+        if (line !== 'all' && cardLine !== line) match = false;
+        if (client !== 'all') {
+          if (client === 'clash-ok') {
+            if (cardClient !== '自研+通用订阅' && cardClient !== '通用订阅') match = false;
+          } else if (cardClient !== client) {
+            match = false;
+          }
+        }
+        if (cardPrice > maxPrice) match = false;
+        if (cardTraffic < minTraffic) match = false;
+        if (status !== 'all') {
+          if (status === 'ai-supported') {
+            if (cardAi !== 'supported' && cardAi !== 'vendor') match = false;
+          } else if (status === 'historical') {
+            if (cardStatus !== 'historical' && cardStatus !== 'pending') match = false;
+          } else if (cardStatus !== status) {
+            match = false;
+          }
+        }
+
+        card.classList.toggle('hidden', !match);
+        if (match) visibleCount++;
+      });
+
+      const sortedCards = [...cards].sort((a, b) => {
+        if (sort === 'price-asc') {
+          return parseFloat(a.getAttribute('data-price') || '0') - parseFloat(b.getAttribute('data-price') || '0');
+        }
+        if (sort === 'traffic-desc') {
+          return parseFloat(b.getAttribute('data-traffic') || '0') - parseFloat(a.getAttribute('data-traffic') || '0');
+        }
+        return 0;
+      });
+
+      sortedCards.forEach((c) => grid.appendChild(c));
+
+      if (countEl) countEl.textContent = String(visibleCount);
+      if (emptyState) emptyState.classList.toggle('hidden', visibleCount > 0);
+    }
+
+    function resetAll() {
+      if (searchInput) searchInput.value = '';
+      if (lineSelect) lineSelect.value = 'all';
+      if (clientSelect) clientSelect.value = 'all';
+      if (priceSelect) priceSelect.value = 'all';
+      if (trafficSelect) trafficSelect.value = 'all';
+      if (statusSelect) statusSelect.value = 'all';
+      if (sortSelect) sortSelect.value = 'rank';
+      applyFilters();
+    }
+
+    [searchInput, lineSelect, clientSelect, priceSelect, trafficSelect, statusSelect, sortSelect].forEach((el) => {
+      if (el) {
+        el.addEventListener('input', applyFilters);
+        el.addEventListener('change', applyFilters);
+      }
+    });
+
+    resetBtn?.addEventListener('click', resetAll);
+    emptyResetBtn?.addEventListener('click', resetAll);
+
+    applyFilters();
+  });
+</script>

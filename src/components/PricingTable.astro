@@ -1,0 +1,90 @@
+---
+import type { BrandProfile } from '../data/brands/schema';
+import { getBrandLink } from '../data/links';
+
+export interface Props {
+  brand: BrandProfile;
+}
+
+const { brand } = Astro.props;
+const linkInfo = getBrandLink(brand.slug);
+---
+
+<section class="my-8 bg-white border border-[#E5EAF1] rounded-2xl overflow-hidden shadow-sm">
+  <div class="p-5 sm:p-6 bg-[#F7F9FC] border-b border-[#E5EAF1] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+    <div>
+      <div class="flex items-center gap-2">
+        <h3 class="text-lg sm:text-xl font-extrabold text-[#172033]">
+          {brand.name} 核实套餐与计费周期表
+        </h3>
+        <span class="text-xs px-2.5 py-0.5 rounded-full bg-[#EFF6FF] text-[#2563EB] font-semibold">
+          核实日期：{brand.verifiedDate}
+        </span>
+      </div>
+      <p class="text-xs text-[#64748B] mt-1">
+        重要提示：年付折算月均成本仅用于横向估算，不等同于可以按该金额单买一个月。下单前请核对实时流量重置规则。
+      </p>
+    </div>
+    {linkInfo && (
+      <div class="text-xs bg-white px-3.5 py-2 rounded-xl border border-[#E5EAF1] shrink-0">
+        <span class="text-[#64748B]">核实优惠码：</span>
+        <code class="font-mono font-bold text-[#2563EB] ml-1">{linkInfo.couponCode}</code>
+      </div>
+    )}
+  </div>
+
+  {brand.discrepancyNotes.length > 0 && (
+    <div class="px-5 py-3 bg-amber-50 border-b border-amber-200 text-xs text-amber-900">
+      <strong>资料来源口径差异说明：</strong>
+      {brand.discrepancyNotes.join(' ')}
+    </div>
+  )}
+
+  <div class="overflow-x-auto">
+    <table class="w-full text-left border-collapse text-sm">
+      <thead>
+        <tr class="bg-slate-50 border-b border-[#E5EAF1] text-[#172033] font-semibold">
+          <th class="py-3.5 px-4">套餐名称</th>
+          <th class="py-3.5 px-4">计费周期</th>
+          <th class="py-3.5 px-4">标称价格</th>
+          <th class="py-3.5 px-4">折算月成本说明</th>
+          <th class="py-3.5 px-4">流量额度</th>
+          <th class="py-3.5 px-4">重置方式</th>
+          <th class="py-3.5 px-4">备注说明</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-[#E5EAF1]">
+        {brand.plans.map((plan) => (
+          <tr class={plan.highlight ? 'bg-[#EFF6FF]/40' : 'hover:bg-slate-50/70'}>
+            <td class="py-3.5 px-4 font-bold text-[#172033]">
+              {plan.name}
+              {plan.highlight && (
+                <span class="ml-1.5 text-[10px] px-1.5 py-0.5 rounded bg-[#2563EB] text-white font-semibold">
+                  主力档
+                </span>
+              )}
+            </td>
+            <td class="py-3.5 px-4">
+              <span class="px-2 py-0.5 rounded text-xs font-medium bg-slate-100 text-slate-700">
+                {plan.billingCycle}
+              </span>
+            </td>
+            <td class="py-3.5 px-4 font-mono font-bold text-[#2563EB]">{plan.price}</td>
+            <td class="py-3.5 px-4 text-xs text-[#64748B]">
+              {plan.isAnnualAveragedNote
+                ? plan.isAnnualAveragedNote
+                : plan.billingCycle === '月付'
+                  ? '单月直付价'
+                  : plan.billingCycle === '一次性付费'
+                    ? '一次性买断（不按月扣费）'
+                    : '按周期结算'}
+            </td>
+            <td class="py-3.5 px-4 font-mono font-semibold text-[#172033]">{plan.traffic}</td>
+            <td class="py-3.5 px-4 text-xs text-[#64748B]">{plan.resetRule}</td>
+            <td class="py-3.5 px-4 text-xs text-[#64748B]">{plan.notes || '以官网当期条款为准'}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</section>

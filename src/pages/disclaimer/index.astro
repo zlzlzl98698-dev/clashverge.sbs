@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { siteConfig } from '../../data/site';
+
+const breadcrumbs = [
+  { name: '首页', href: '/' },
+  { name: '使用声明与商业推广披露', href: '/disclaimer/' },
+];
+---
+
+<BaseLayout
+  title="使用声明与商业推广合规披露 | 订阅指南 (clashverge.sbs)"
+  description="订阅指南（clashverge.sbs）关于技术研究用途、商业联盟推广披露（Affiliate Disclosure）及第三方服务风险提示的完整声明。"
+  canonical="/disclaimer/"
+  breadcrumbs={breadcrumbs}
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
+    <Breadcrumb items={breadcrumbs} />
+    <article class="prose-editorial bg-white p-6 sm:p-10 rounded-3xl border border-[#E5EAF1]">
+      <h1 class="text-3xl font-extrabold text-[#172033] mb-4">使用声明与商业推广披露</h1>
+      <h2>一、商业推广合作披露（Affiliate Disclosure）</h2>
+      <p>{siteConfig.affiliateDisclosure}</p>
+      <p>
+        本站所有外部品牌注册链接均统一由 <code>src/data/links.ts</code> 管理，并严格添加 <code>target="_blank" rel="nofollow sponsored noopener"</code> 属性。其中「光速云」为本站优先建设的商业推广合作品牌，已在首页、排行榜及品牌详情页显著披露。
+      </p>
+      <h2>二、客观评测与消费风险提示</h2>
+      <p>
+        网络代理服务的实际速度与可用性受用户所在地网络运营商、国际出口状况、晚高峰拥塞以及目标平台（如 OpenAI、Netflix、Google）风控策略调整的影响。本站展示的测速记录（如 <code>2026-10-19</code> 非晚高峰数据）仅代表当次测试环境下的客观快照，不构成对未来长期稳定性的担保。由于多数服务商对特殊商品执行不支持退款政策，强烈建议新用户优先选择单月付或小额套餐实测。
+      </p>
+      <h2>三、合规使用声明</h2>
+      <p>
+        本站所有关于 Clash Verge Rev、Mihomo、sing-box 等开源软件及网络协议的介绍仅供跨境学术检索、跨国软件开发协作与网络工程技术研究参考，请读者自觉遵守所在地法律法规。
+      </p>
+    </article>
+  </div>
+</BaseLayout>

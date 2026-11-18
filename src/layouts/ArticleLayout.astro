@@ -1,0 +1,245 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+import FAQSection from '../components/FAQSection.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import BrandConversionCTA from '../components/BrandConversionCTA.astro';
+import type { UnifiedContentItem } from '../utils/content';
+import { getCategoryLabel } from '../utils/content';
+import { getBrandBySlug } from '../data/brands';
+import { getSecondaryTopic } from '../data/navigation';
+
+export interface Props {
+  item: UnifiedContentItem;
+  headings?: { depth: number; slug: string; text: string }[];
+  relatedArticles?: UnifiedContentItem[];
+  prevArticle?: UnifiedContentItem;
+  nextArticle?: UnifiedContentItem;
+}
+
+const { item, headings = [], relatedArticles = [], prevArticle, nextArticle } = Astro.props;
+const { data, readingMinutes, charCount } = item;
+const categoryLabel = getCategoryLabel(data.category);
+const topicObj = getSecondaryTopic(data.category, data.topicSlug);
+
+const breadcrumbs = [
+  { name: '首页', href: '/' },
+  { name: categoryLabel, href: `/${data.category}/` },
+  ...(topicObj ? [{ name: topicObj.name, href: topicObj.href }] : []),
+  { name: data.title, href: item.href },
+];
+
+const associatedBrands = (data.relatedBrands || [])
+  .map((s) => getBrandBySlug(s))
+  .filter((b): b is NonNullable<typeof b> => Boolean(b));
+
+const primaryBrandSlug = data.relatedBrands?.[0] || 'guangsuyun';
+---
+
+<BaseLayout
+  title={data.seoTitle || data.title}
+  description={data.description}
+  canonical={data.canonical || item.href}
+  ogType="article"
+  ogImage={data.cover}
+  pubDate={data.pubDate}
+  updatedDate={data.updatedDate}
+  author={data.author}
+  breadcrumbs={breadcrumbs}
+  faq={data.faq}
+  schemaType="BlogPosting"
+>
+  <article class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+    <!-- 1. Breadcrumb -->
+    <Breadcrumb items={breadcrumbs} />
+
+    <!-- Article Header Card -->
+    <header class="pb-8 mb-8 border-b border-[#E5EAF1]">
+      <!-- 2. Category & Intent Tags -->
+      <div class="flex flex-wrap items-center gap-2 mb-4">
+        <a
+          href={`/${data.category}/`}
+          class="px-3 py-1 rounded-full text-xs font-bold bg-[#EFF6FF] text-[#2563EB]"
+        >
+          {categoryLabel}
+        </a>
+        {topicObj && (
+          <a
+            href={topicObj.href}
+            class="px-3 py-1 rounded-full text-xs font-semibold bg-[#F7F9FC] border border-[#E5EAF1] text-[#172033] hover:text-[#2563EB]"
+          >
+            专题：{topicObj.name}
+          </a>
+        )}
+        <span class="px-2.5 py-1 rounded-full text-xs font-mono bg-slate-100 text-slate-700">
+          主关键词：{data.primaryKeyword}
+        </span>
+        {data.pillar && (
+          <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-[#172033] text-white">
+            Pillar 核心支柱文章
+          </span>
+        )}
+      </div>
+
+      <!-- 3. H1 Title -->
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-[#172033] leading-tight tracking-tight mb-4">
+        {data.title}
+      </h1>
+
+      <!-- 4. Excerpt / Summary -->
+      <p class="text-base sm:text-lg text-[#64748B] leading-relaxed max-w-4xl mb-5">
+        {data.excerpt || data.description}
+      </p>
+
+      <!-- 5. Author & Verification Metadata -->
+      <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs sm:text-sm text-[#64748B] bg-[#F7F9FC] px-4 py-3 rounded-xl border border-[#E5EAF1]">
+        <span class="inline-flex items-center gap-2">
+          <img src="/avatar.webp" alt={data.author} class="w-5 h-5 rounded-full object-cover border border-[#E5EAF1]" />
+          <span>作者：<strong class="text-[#172033]">{data.author}</strong></span>
+        </span>
+        <span>发布日期：<time datetime={data.pubDate}>{data.pubDate}</time></span>
+        <span>最后更新：<time datetime={data.updatedDate} class="font-semibold text-[#2563EB]">{data.updatedDate}</time></span>
+        <span>价格/测速核实批次：{data.priceVerifiedDate}</span>
+        <span>预计阅读：约 {readingMinutes} 分钟（{charCount} 字）</span>
+      </div>
+    </header>
+
+    <!-- Desktop 2-Column Layout: Left Body + Right Sticky Sidebar -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+      <!-- Left Column: Main Article Content -->
+      <div class="lg:col-span-8 min-w-0">
+        <!-- 6. Cover Image -->
+        <div class="mb-8 rounded-2xl overflow-hidden border border-[#E5EAF1] bg-[#0F172A]">
+          <img
+            src={data.cover}
+            alt={data.coverAlt || data.title}
+            width="800"
+            height="450"
+            class="w-full h-auto object-cover max-h-[400px]"
+          />
+        </div>
+
+        <!-- Answer-First GEO Box -->
+        {data.answerFirst && (
+          <div class="mb-8 p-5 sm:p-6 rounded-2xl bg-[#EFF6FF] border-l-4 border-[#2563EB]">
+            <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#2563EB] mb-2">
+              <span>⚡ 核心结论速览 (Answer-First)</span>
+            </div>
+            <p class="text-sm sm:text-base text-[#172033] font-medium leading-relaxed">
+              {data.answerFirst}
+            </p>
+          </div>
+        )}
+
+        <!-- 7. Mobile Collapsible TOC -->
+        <div class="lg:hidden">
+          <TableOfContents headings={headings} />
+        </div>
+
+        <!-- 8 & 9. Main Prose & Embedded Components -->
+        <div class="prose-editorial">
+          <slot />
+        </div>
+
+        <!-- 14. Commercial Conversion Module -->
+        <BrandConversionCTA brandSlug={primaryBrandSlug} />
+
+        <!-- 10. FAQ Section -->
+        <FAQSection items={data.faq} />
+
+        <!-- 11. Sources & Verification Record -->
+        <section class="my-8 p-5 rounded-2xl bg-[#F7F9FC] border border-[#E5EAF1] text-xs text-[#64748B] space-y-2">
+          <h2 class="text-sm font-bold text-[#172033]">📚 内容资料来源与核验说明</h2>
+          <ul class="list-disc pl-5 space-y-1">
+            {data.sources.map((src) => (
+              <li>原始核验档案：{src}（数据核实批次：{data.priceVerifiedDate}）</li>
+            ))}
+            <li>全站品牌数据库入口：<a href="/brands/" class="text-[#2563EB] hover:underline">/brands/（31家独立品牌实测与待核实清单）</a></li>
+          </ul>
+          <p class="pt-1 text-[11px]">
+            免责与透明声明：网络节点延迟与流媒体解锁受用户本地运营商（电信/联通/移动）、晚高峰拥塞及目标平台风控策略影响，本文结论基于核实批次记录，仅供技术研究与选型参考。
+          </p>
+        </section>
+
+        <!-- 13. Next Step Reading / Prev & Next Navigation -->
+        {(prevArticle || nextArticle) && (
+          <nav aria-label="上下文阅读导航" class="my-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {prevArticle ? (
+              <a
+                href={prevArticle.href}
+                class="editorial-card p-4 block group"
+              >
+                <span class="text-xs text-[#64748B] block mb-1">← 上一篇推荐阅读</span>
+                <strong class="text-sm font-bold text-[#172033] group-hover:text-[#2563EB] line-clamp-2">
+                  {prevArticle.data.title}
+                </strong>
+              </a>
+            ) : <div />}
+            {nextArticle && (
+              <a
+                href={nextArticle.href}
+                class="editorial-card p-4 block text-right group"
+              >
+                <span class="text-xs text-[#64748B] block mb-1">下一篇延伸阅读 →</span>
+                <strong class="text-sm font-bold text-[#172033] group-hover:text-[#2563EB] line-clamp-2">
+                  {nextArticle.data.title}
+                </strong>
+              </a>
+            )}
+          </nav>
+        )}
+
+        <!-- 12. Related Articles -->
+        <RelatedArticles articles={relatedArticles} />
+      </div>
+
+      <!-- Right Column: Sticky Sidebar (Desktop) -->
+      <aside class="lg:col-span-4 space-y-6 lg:sticky lg:top-22">
+        <TableOfContents headings={headings} />
+
+        <!-- Associated Brands Widget -->
+        {associatedBrands.length > 0 && (
+          <div class="p-5 rounded-2xl border border-[#E5EAF1] bg-white space-y-3.5 shadow-xs">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
+              <h3 class="text-xs font-extrabold uppercase tracking-wider text-[#172033]">
+                关联品牌评测档案
+              </h3>
+              <a href="/brands/" class="text-xs text-[#2563EB] hover:underline">全部31家 →</a>
+            </div>
+            <div class="space-y-2.5">
+              {associatedBrands.slice(0, 5).map((b) => (
+                <a
+                  href={`/brands/${b.slug}/`}
+                  class="flex items-center justify-between p-2.5 rounded-xl bg-[#F7F9FC] hover:bg-[#EFF6FF] border border-[#E5EAF1] transition-colors"
+                >
+                  <div>
+                    <p class="text-sm font-bold text-[#172033]">{b.name}</p>
+                    <p class="text-[11px] text-[#64748B]">{b.lineCategory} · {b.clientSupport}</p>
+                  </div>
+                  <span class="text-xs font-mono font-bold text-[#2563EB]">
+                    ¥{b.entryMonthlyNumeric}/月起
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <!-- Quick Troubleshooting & Tools Box -->
+        <div class="p-5 rounded-2xl border border-[#E5EAF1] bg-[#F7F9FC] space-y-3">
+          <h3 class="text-xs font-extrabold uppercase tracking-wider text-[#172033]">
+            实用工具与排障直达
+          </h3>
+          <ul class="space-y-2 text-xs font-medium text-[#64748B]">
+            <li><a href="/clash/download/" class="hover:text-[#2563EB] flex justify-between"><span>Clash Verge Rev 安装包选型</span><span>→</span></a></li>
+            <li><a href="/clash/subscription/" class="hover:text-[#2563EB] flex justify-between"><span>Clash 订阅链接导入教程</span><span>→</span></a></li>
+            <li><a href="/clash/troubleshooting/" class="hover:text-[#2563EB] flex justify-between"><span>节点全部 Timeout 急救修复</span><span>→</span></a></li>
+            <li><a href="/resources/risk-intelligence/" class="hover:text-[#2563EB] flex justify-between"><span>31家品牌同系矩阵与风险审计</span><span>→</span></a></li>
+            <li><a href="/resources/runaway-warning/" class="hover:text-[#2563EB] flex justify-between"><span>机场跑路前六大征兆识别</span><span>→</span></a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </article>
+</BaseLayout>

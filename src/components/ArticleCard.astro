@@ -1,0 +1,163 @@
+---
+import type { UnifiedContentItem } from '../utils/content';
+import { getCategoryLabel } from '../utils/content';
+
+export interface Props {
+  item: UnifiedContentItem;
+  variant?: 'default' | 'featured' | 'compact' | 'horizontal' | 'review' | 'comparison' | 'guide' | 'related';
+}
+
+const { item, variant = 'default' } = Astro.props;
+const { data, href, readingMinutes } = item;
+const categoryLabel = getCategoryLabel(data.category);
+const summaryText = data.excerpt || data.description;
+---
+
+{variant === 'featured' ? (
+  <article class="editorial-card overflow-hidden grid grid-cols-1 lg:grid-cols-12 group">
+    <a href={href} class="lg:col-span-7 relative overflow-hidden bg-[#0F172A] min-h-[240px] lg:min-h-[340px] block">
+      <img
+        src={data.cover}
+        alt={data.coverAlt || data.title}
+        loading="eager"
+        width="800"
+        height="450"
+        class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+      />
+      <div class="absolute top-4 left-4 flex flex-wrap gap-2">
+        <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#2563EB] text-white shadow">
+          {data.pillar ? 'Pillar 核心指南' : '编辑精选'}
+        </span>
+        <span class="px-3 py-1 rounded-full text-xs font-medium bg-[#0B1221]/85 text-slate-200 backdrop-blur-sm">
+          {categoryLabel}
+        </span>
+      </div>
+    </a>
+    <div class="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between bg-white">
+      <div class="space-y-4">
+        <div class="flex flex-wrap items-center gap-2 text-xs text-[#64748B]">
+          <span class="font-semibold text-[#2563EB]">{data.primaryKeyword}</span>
+          <span>·</span>
+          <time datetime={data.updatedDate}>更新于 {data.updatedDate}</time>
+          <span>·</span>
+          <span>约 {readingMinutes} 分钟阅读</span>
+        </div>
+        <h3 class="text-xl sm:text-2xl font-extrabold text-[#172033] group-hover:text-[#2563EB] transition-colors leading-snug">
+          <a href={href}>{data.title}</a>
+        </h3>
+        <p class="text-sm sm:text-[15px] text-[#64748B] line-clamp-3 leading-relaxed">
+          {summaryText}
+        </p>
+      </div>
+      <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between text-xs text-[#64748B]">
+        <span class="inline-flex items-center gap-1.5">
+          <img src="/avatar.webp" alt={data.author} class="w-4 h-4 rounded-full object-cover" />
+          <span>{data.author}</span>
+        </span>
+        <a href={href} class="font-semibold text-[#2563EB] group-hover:translate-x-0.5 transition-transform">
+          阅读完整深度报告 →
+        </a>
+      </div>
+    </div>
+  </article>
+) : variant === 'horizontal' ? (
+  <article class="editorial-card p-4 sm:p-5 flex flex-col sm:flex-row gap-5 items-start sm:items-center group">
+    <a href={href} class="w-full sm:w-52 h-36 rounded-xl overflow-hidden bg-[#0F172A] shrink-0 block">
+      <img
+        src={data.cover}
+        alt={data.coverAlt || data.title}
+        loading="lazy"
+        width="400"
+        height="225"
+        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+      />
+    </a>
+    <div class="flex-1 min-w-0 space-y-2">
+      <div class="flex flex-wrap items-center gap-2 text-xs text-[#64748B]">
+        <span class="px-2 py-0.5 rounded-md bg-[#EFF6FF] text-[#2563EB] font-semibold">
+          {categoryLabel}
+        </span>
+        <span>·</span>
+        <time datetime={data.updatedDate}>{data.updatedDate}</time>
+        <span>·</span>
+        <span>{readingMinutes} 分钟阅读</span>
+      </div>
+      <h3 class="text-lg font-bold text-[#172033] group-hover:text-[#2563EB] transition-colors line-clamp-2">
+        <a href={href}>{data.title}</a>
+      </h3>
+      <p class="text-sm text-[#64748B] line-clamp-2 leading-relaxed">{summaryText}</p>
+    </div>
+  </article>
+) : variant === 'compact' ? (
+  <article class="editorial-card p-4 flex flex-col justify-between group">
+    <div class="space-y-2">
+      <div class="flex items-center justify-between text-xs text-[#64748B]">
+        <span class="px-2 py-0.5 rounded bg-[#F7F9FC] border border-[#E5EAF1] text-[#2563EB] font-medium">
+          {categoryLabel}
+        </span>
+        <time datetime={data.updatedDate}>{data.updatedDate}</time>
+      </div>
+      <h3 class="text-[15px] font-bold text-[#172033] group-hover:text-[#2563EB] transition-colors line-clamp-2">
+        <a href={href}>{data.title}</a>
+      </h3>
+      <p class="text-xs text-[#64748B] line-clamp-2">{summaryText}</p>
+    </div>
+    <div class="pt-3 mt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-[#64748B]">
+      <span>{readingMinutes} 分钟</span>
+      <a href={href} class="text-[#2563EB] font-semibold">详情 →</a>
+    </div>
+  </article>
+) : (
+  <article class="editorial-card overflow-hidden flex flex-col justify-between group">
+    <div>
+      <a href={href} class="relative h-44 w-full overflow-hidden bg-[#0F172A] block">
+        <img
+          src={data.cover}
+          alt={data.coverAlt || data.title}
+          loading="lazy"
+          width="600"
+          height="338"
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        />
+        <div class="absolute top-3 left-3 flex items-center gap-1.5">
+          <span class="px-2.5 py-0.5 rounded-md text-xs font-semibold bg-white/95 text-[#172033] shadow-sm">
+            {categoryLabel}
+          </span>
+          {data.contentType === 'review' && (
+            <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-[#2563EB] text-white">深度评测</span>
+          )}
+          {data.contentType === 'comparison' && (
+            <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-emerald-600 text-white">横向对比</span>
+          )}
+          {data.contentType === 'guide' && (
+            <span class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-indigo-600 text-white">实操教程</span>
+          )}
+        </div>
+      </a>
+      <div class="p-5 space-y-2.5">
+        <div class="flex items-center gap-2 text-xs text-[#64748B]">
+          <time datetime={data.pubDate}>发布 {data.pubDate}</time>
+          <span>·</span>
+          <span>更新 {data.updatedDate}</span>
+          <span>·</span>
+          <span>{readingMinutes} 分钟</span>
+        </div>
+        <h3 class="text-lg font-bold text-[#172033] group-hover:text-[#2563EB] transition-colors line-clamp-2 leading-snug">
+          <a href={href}>{data.title}</a>
+        </h3>
+        <p class="text-sm text-[#64748B] line-clamp-3 leading-relaxed">
+          {summaryText}
+        </p>
+      </div>
+    </div>
+    <div class="px-5 py-3.5 bg-[#F7F9FC] border-t border-[#E5EAF1] flex items-center justify-between text-xs text-[#64748B]">
+      <span class="inline-flex items-center gap-1.5 truncate max-w-[160px]">
+        <img src="/avatar.webp" alt={data.author} class="w-3.5 h-3.5 rounded-full object-cover shrink-0" />
+        <span class="truncate">{data.author}</span>
+      </span>
+      <a href={href} class="font-semibold text-[#2563EB] shrink-0">
+        阅读全文 →
+      </a>
+    </div>
+  </article>
+)}

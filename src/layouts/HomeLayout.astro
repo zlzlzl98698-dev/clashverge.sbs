@@ -1,0 +1,14 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import type { Props as SEOProps } from '../components/SEOHead.astro';
+
+export interface Props extends SEOProps {}
+
+const props = Astro.props;
+---
+
+<BaseLayout {...props}>
+  <div class="space-y-16 pb-10">
+    <slot />
+  </div>
+</BaseLayout>

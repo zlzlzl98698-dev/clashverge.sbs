@@ -1,0 +1,42 @@
+---
+import type { PrimaryNavSection } from '../../data/navigation';
+
+export interface Props {
+  section: PrimaryNavSection;
+}
+const { section } = Astro.props;
+---
+
+<div class="editorial-card p-6 flex flex-col justify-between group">
+  <div>
+    <div class="flex items-center justify-between mb-4">
+      <span class="px-2.5 py-1 rounded-lg bg-[#EFF6FF] text-[#2563EB] text-xs font-bold">
+        {section.badge}
+      </span>
+      <span class="text-xs text-[#64748B] font-mono">{section.topics.length} 个二级专题</span>
+    </div>
+    <h3 class="text-xl font-extrabold text-[#172033] group-hover:text-[#2563EB] transition-colors mb-2">
+      <a href={section.href}>{section.name}</a>
+    </h3>
+    <p class="text-sm text-[#64748B] leading-relaxed mb-4">
+      {section.summary}
+    </p>
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      {section.topics.slice(0, 5).map((t) => (
+        <a
+          href={t.href}
+          class="text-xs px-2.5 py-1 rounded-md bg-[#F7F9FC] hover:bg-[#EFF6FF] text-[#172033] hover:text-[#2563EB] border border-[#E5EAF1] transition-colors"
+        >
+          {t.name}
+        </a>
+      ))}
+    </div>
+  </div>
+  <a
+    href={section.href}
+    class="pt-3 border-t border-slate-100 text-xs font-bold text-[#2563EB] flex items-center justify-between"
+  >
+    <span>进入「{section.name}」频道</span>
+    <span>→</span>
+  </a>
+</div>

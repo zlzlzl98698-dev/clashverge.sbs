@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SearchBox from '../components/SearchBox.astro';
+import { primaryNavSections } from '../data/navigation';
+---
+
+<BaseLayout
+  title="404 页面未找到 | 订阅指南 (clashverge.sbs)"
+  description="您访问的页面不存在或已被移动，请使用站内全文搜索或四大主导航继续浏览。"
+  noindex={true}
+  pagefindIgnore={true}
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center space-y-8">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#EFF6FF] text-[#2563EB] text-xs font-mono font-bold">
+      HTTP STATUS 404 // PAGE NOT FOUND
+    </div>
+    <h1 class="text-3xl sm:text-5xl font-extrabold text-[#172033]">
+      抱歉，您访问的页面路径不存在
+    </h1>
+    <p class="text-base text-[#64748B] max-w-xl mx-auto">
+      该链接可能已更新或输入有误。您可以直接在下方检索全站 31 家机场品牌档案与原创教程，或从四大核心频道重新进入。
+    </p>
+
+    <div class="max-w-xl mx-auto">
+      <SearchBox />
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-left pt-4">
+      {primaryNavSections.map((sec) => (
+        <a href={sec.href} class="editorial-card p-5 block">
+          <strong class="text-base font-extrabold text-[#172033] block mb-1">{sec.name}</strong>
+          <span class="text-xs text-[#64748B] block mb-2">{sec.summary}</span>
+          <span class="text-xs font-bold text-[#2563EB]">进入频道 →</span>
+        </a>
+      ))}
+    </div>
+
+    <div class="pt-4 flex justify-center gap-4 text-sm font-bold">
+      <a href="/" class="px-5 py-2.5 rounded-xl bg-[#2563EB] text-white">返回网站首页</a>
+      <a href="/brands/" class="px-5 py-2.5 rounded-xl bg-[#F7F9FC] border border-[#E5EAF1] text-[#172033]">
+        浏览 31 家品牌数据库
+      </a>
+    </div>
+  </div>
+</BaseLayout>
